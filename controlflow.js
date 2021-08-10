@@ -24,7 +24,16 @@ function logType(singleArg) {
     }
 }
 
-console.log(logType);
+console.log(logType(undefined));
+console.log(logType(null));
+console.log(logType(1));
+console.log(logType(NaN));
+console.log(logType("hey"));
+console.log(logType(true));
+console.log(logType(2n));
+console.log(logType(function () {}));
+console.log(logType([1, 2, 3]));
+console.log(logType({}));
 
 // exercice 2
 var a = {
