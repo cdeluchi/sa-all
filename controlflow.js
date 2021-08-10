@@ -4,21 +4,21 @@ function logType(singleArg) {
     if (typeof singleArg == "undefined") {
         return undefined;
     } else if (typeof singleArg == "string") {
-        return string;
-    } else if (typeof singleArg == "0,00055555444433") {
+        return "string";
+    } else if (typeof singleArg == "bigint") {
         return BigInt;
-    } else if (typeof singleArg == "null") {
+    } else if (typeof singleArg === "null") {
         return null;
-    } else if (typeof singleArg == 233) {
+    } else if (typeof singleArg == "number") {
         return Number;
-    } else if (typeof singleArg == "true" || "false") {
+    } else if (typeof singleArg == "boolean") {
         return Boolean;
-    } else if (typeof singleArg == { home: blue, car: red }) {
+    } else if (typeof singleArg == {}) {
         return Object;
-    } else if (typeof singleArg == ["pepper"]) {
+    } else if (typeof singleArg == []) {
         return Array.isArray;
-    } else if (typeof singleArg == "123") {
-        return NaN;
+    } else if (typeof singleArg == "NaN") {
+        return isNaN(NaN);
     } else {
         return "I have no Idea!";
     }
@@ -44,7 +44,11 @@ var a = {
 
 var b = {};
 for (var prop in a) {
-    const value = a[prop];
+    console.log("property of a", prop);
+    console.log("value of a", a[prop]);
+    var valueA = a[prop];
+    var propertyA = prop;
+    b[valueA] = propertyA;
 }
 console.log(b);
 
