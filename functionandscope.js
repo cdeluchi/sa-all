@@ -2,7 +2,9 @@
 function sumNumber(number) {
     return number + 10;
 }
-sumNumber(5);
+sumNumber(5, 10);
+sumNumber(5, 10, 15);
+sumNumber(5, 10, 15, 100, 200);
 
 // 2 Write a function that takes another function as an argument.
 // It should wait 1.5 seconds and then run the function that was passed in
