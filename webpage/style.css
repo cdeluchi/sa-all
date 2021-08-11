@@ -19,10 +19,10 @@ header .menu {
 
 h2 {
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 20px;
+    font-size: 50px;
     color: whitesmoke;
     position: absolute;
-    top: 200px;
+    top: 350px;
     left: 450px;
     width: 100%;
     margin: 0 auto;
@@ -32,66 +32,39 @@ h2 {
 
 button {
     position: absolute;
-    top: 250px;
-    left: 540px;
+    top: 430px;
+    left: 800px;
     width: 100%;
     margin: 0 auto;
     width: 100px;
     height: 30px;
 }
 
-/* }
-body {
-    height: 2000px;
-} */
-/* 
-header {
-    width: 40px;
-    height: 80px;
-    padding: 40px;
-    border: 1px #c9adc7 solid;
-}
-
-.container {
-    background-color: rgb(255, 255, 255);
-    font-display: center;
-    font-size: 30px;
-    border: 1px #c9adc7 solid;
-    align-content: center;
-    font-size: 20px;
-    font-family: "Courier New", Courier, monospace;
-}
-
-.button {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    background-color: rgb(238, 237, 226);
-    color: #772070;
-    font-size: 20px;
-} */
-/* 
-#logo {
-    height: 150px;
-    width: 150px;
-    background-image: url(./1.png);
-    background-size: cover;
-} */
-/* 
-#menu {
-    position: absolute;
-    top: 40px;
-    right: 10px;
-    height: 80px;
-    width: 80px;
-    background-size: cover;
-} */
-
-/* 
-h2 {
-    position: absolute;
-    top: 100px;
-    left: 100px;
+.imgcenter {
     width: 100%;
-    color: whitesmoke;
-} */
+    height: 100%;
+}
+.main {
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}
+
+.cat {
+    float: left;
+}
+
+.world {
+    float: left;
+}
+.swim {
+    float: left;
+}
+.column {
+    float: left;
+}
