@@ -46,6 +46,3 @@ function each(objOrArr, callback) {
 var firstObj = ["home", "paper", "glass", "tower"];
 each(firstObj, callback);
 
-// 1 parameter is and obj {}
-// loop over the properties
-// callback each one
