@@ -1,0 +1,14 @@
+// ex2 Write a function that takes an array as a parameter and returns a new array containing all of the items that are in the array that was passed in but in reverse order. Unlike the reverse method that all arrays have, this function should leave the original array unchanged.
+function arr(){
+    var newArr = ["casa", "cachorro", "gato", "papagaio"];
+for (var = i; i = 0; i--);
+return arr(newArr);
+
+
+// ex3 Write a function called getLessThanZero that expects an array of numbers to be passed to it and returns a new array containing only those numbers from the array that was passed in that are less than zero
+
+
+
+// ex1 Write a function called each that accepts either an object or an array as its first parameter and a callback as its second parameter.
+// If the first parameter is an object, it should loop over the object's properties and call the callback for each one. The property value should be the first parameter passed to the callback and the property name should be the second.
+// If the first parameter is an array, it should loop over the array's elements and call the callback for each one. The array element should be the first parameter passed to the callback and the index should be the second.
