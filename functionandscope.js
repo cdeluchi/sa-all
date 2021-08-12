@@ -1,13 +1,23 @@
 // 1 Write a function that takes any number of numbers as arguments and returns the sum of those numbers.
-function sumNumber(number) {
-    return number + 10;
+
+// This adds 10 to one number.
+// We only want to add 10 to something if 10 is one of the arguments to this function.
+// We want this function to be passed not just one number but any number of numbers.
+// All of the numbers that are passed, however many there are, should be added together
+// and the sum should be returned.
+
+function sumNumber() {
+    var newSum = [5, 10, 15, 100, 200];
+    for (var i = 0; i < sumNumber.length; i++) {
+        return (newSum += sumNumber[i]);
+    }
+    return newSum;
 }
-sumNumber(5, 10);
-sumNumber(5, 10, 15);
 sumNumber(5, 10, 15, 100, 200);
 
 // 2 Write a function that takes another function as an argument.
 // It should wait 1.5 seconds and then run the function that was passed in
+
 setTimeout(function () {
     console.log("log after 1.5 seconds");
 }, 1500);
@@ -24,13 +34,12 @@ setTimeout(function () {
 // that is greater than or equal to 1000000 and return that.
 
 function notError(number) {
-    if (number <= 0 || number == 0) {
+    if (number < 0 || number == 0 || isNaN(number) === true) {
         return "ERROR";
     } else if (number >= 1000000) {
-        return 1000000;
+        return number;
     } else {
-        number * 10 >= 1000000;
-        return notError(4);
+        return notError(number * 2000000);
     }
 }
 notError();
