@@ -4,34 +4,38 @@
 
 body {
     background: white;
-    margin: 20px 0;
 }
 
 .wrapper {
     width: 800px;
     margin: 0 auto;
+    padding: 0;
 }
 
 header {
     padding: 20px;
     border: 2px s white;
-    background-color: white;
+    background-color: teal;
 }
 
 header .logo {
     height: 50px;
     width: 150px;
-    background: rgb(255, 250, 241);
     float: left;
     padding-bottom: 10px;
 }
 header .menu {
     height: 50px;
     width: 50px;
-    background: rgb(255, 255, 255);
     float: right;
     margin: 0;
     padding-bottom: 10px;
+}
+
+.center {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 h2 {
@@ -40,8 +44,7 @@ h2 {
     color: whitesmoke;
     position: absolute;
 }
-
-.container .btn {
+.btn {
     position: relative;
     top: 50%;
     left: 50%;
@@ -54,7 +57,7 @@ h2 {
     border-radius: 30px;
 }
 
-.container .btn:hover {
+.btn:hover {
     background-color: #cc6601;
     color: blanchedalmond;
 }
@@ -62,6 +65,7 @@ h2 {
 .imgcenter {
     width: 100%;
     height: auto;
+    margin: 0;
 }
 
 section {
@@ -78,19 +82,23 @@ img {
 section .cat {
     float: left;
     width: 50%;
+    padding: 20px;
 }
 
 section .world {
     float: left;
     width: 50%;
+    padding: 20px;
 }
 .swim {
     float: left;
     width: 50%;
+    padding: 20px;
 }
 .column {
     float: right;
     width: 50%;
+    padding: 20px;
 }
 footer {
     background-color: rgb(114, 108, 108);
@@ -101,4 +109,33 @@ footer {
 }
 p {
     margin: 0;
+}
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    section {
+        display: inline-block;
+        width: 100%;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section {
+        display: inline-block;
+        width: 100%;
+        font-size: 25px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #666;
+        color: antiquewhite;
+    }
+
+    section {
+        background-color: rgb(114, 108, 108);
+        color: whitesmoke;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 15px;
+    }
 }
