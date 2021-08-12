@@ -24,12 +24,13 @@ setTimeout(function () {
 // that is greater than or equal to 1000000 and return that.
 
 function notError(number) {
-    if (number <= 0 || number == 0 || NaN(1000000)) {
+    if (number <= 0 || number == 0) {
         return "ERROR";
     } else if (number >= 1000000) {
-        return "number";
+        return 1000000;
     } else {
-        var plus10 = number * 10 >= 1000000;
-        return notError(plus10);
+        number * 10 >= 1000000;
+        return notError(4);
     }
 }
+notError();
