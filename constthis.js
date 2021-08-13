@@ -36,16 +36,20 @@ console.log(square.getArea());
 // Characters that are not alphabetic should not change.
 // The toUpperCase and toLowerCase methods that all strings have will come in handy here.
 
-function invertCase(str) {
-    var switchUp = "";
-    var switchDown = "";
 
-    // used loop but the loop do not return the up to down
 
-    for (var i = 0; i < str.length; i++) {}
-    }
-    // This function should return a new string with all the same characters as the string that was passed in
-    // but with the cases of the alphabetic characters switched.
-    return switchDown;
-}
-console.log(invertCase("FRIDAY night!13"));
+var switchUp = str.prototype.toUpperCase.call({
+    toString: function toString(){
+        return "Friday NIGHT";
+    };
+});
+var switchDown = str.prototype.toLowerCase.call({
+    toString: function toString(){
+        return "Friday NIGHT";
+    };
+});
+
+console.log(switchUp, switchDown);
+
+// // This function should return a new string with all the same characters as the string that was passed in
+// // but with the cases of the alphabetic characters switched.
