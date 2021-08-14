@@ -4,38 +4,42 @@
 
 body {
     background: white;
+    margin: 8px;
 }
 
 .wrapper {
     width: 800px;
-    margin: 0 auto;
-    padding: 0;
+    margin: auto;
+    background-color: #ccc;
 }
 
 header {
-    padding: 20px;
-    border: 2px s white;
-    background-color: teal;
+    background-color: white;
+    overflow: hidden;
+    padding: 0 10px;
 }
 
 header .logo {
     height: 50px;
     width: 150px;
     float: left;
-    padding-bottom: 10px;
+    padding: 10px;
+    margin: 10px;
 }
 header .menu {
     height: 50px;
     width: 50px;
     float: right;
-    margin: 0;
-    padding-bottom: 10px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .center {
     width: 100%;
     position: relative;
     overflow: hidden;
+    margin: auto;
+    padding: 0;
 }
 
 h2 {
@@ -43,9 +47,13 @@ h2 {
     font-size: 30px;
     color: whitesmoke;
     position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 20%;
+    right: 0;
+    top: 40%;
 }
 .btn {
-    position: relative;
     top: 50%;
     left: 50%;
     background-color: #fccc33;
@@ -55,6 +63,12 @@ h2 {
     padding: 8px 35px;
     cursor: pointer;
     border-radius: 30px;
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 40%;
+    right: 0;
+    top: 55%;
 }
 
 .btn:hover {
@@ -64,62 +78,70 @@ h2 {
 
 .imgcenter {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
+    padding: 0;
+    filter: brightness(70%);
 }
 
 section {
-    padding: 50px;
+    padding: 10px;
     overflow: hidden;
     background-color: #ccc;
+    padding: 0px;
+    margin: 20px;
 }
 
 img {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
 }
 
-section .cat {
+/* section */
+
+.cat {
     float: left;
     width: 50%;
     padding: 20px;
+    display: inline-flex;
 }
-
-section .world {
-    float: left;
+.world {
+    float: right;
     width: 50%;
     padding: 20px;
+    display: inline-flex;
 }
 .swim {
     float: left;
     width: 50%;
     padding: 20px;
+    display: inline-flex;
 }
 .column {
     float: right;
     width: 50%;
     padding: 20px;
+    display: inline-flex;
 }
-footer {
-    background-color: rgb(114, 108, 108);
+
+/* footer */
+.footerfont {
+    background-color: rgb(85, 81, 81);
     text-align: left;
     color: whitesmoke;
     margin-top: 0;
     padding: 10px;
+    font-size: 12px;
 }
 p {
     margin: 0;
 }
-@media screen and (min-width: 600px) and (max-width: 800px) {
-    section {
-        display: inline-block;
-        width: 100%;
-        font-size: 25px;
-    }
-}
 
-@media screen and (max-width: 600px) {
-    section {
+/* media queries */
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    body {
         display: inline-block;
         width: 100%;
         font-size: 25px;
@@ -127,15 +149,11 @@ p {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #666;
+    section {
+        background-color: rgb(189, 81, 81);
         color: antiquewhite;
     }
-
-    section {
-        background-color: rgb(114, 108, 108);
-        color: whitesmoke;
-        font-family: Georgia, "Times New Roman", Times, serif;
-        font-size: 15px;
+    .wrapper {
+        background-color: rgb(189, 81, 81);
     }
 }
