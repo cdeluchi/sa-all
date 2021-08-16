@@ -16,8 +16,11 @@ function changeParameter(selector) {
 // ex 2
 // Write a function that expects a string representing a class name to be passed as a parameter.
 // The function should return an array containing all the elements in the document that have the class that was passed in.
-var allMyClassH1 = document.getElementsByClassName("container");
-// i.e. return ["h1", "main", "p", 'img']
+function classToCall(container) {
+    var allMyClassH1 = document.getElementsByClassName(container);
+    console.log(allMyClassH1);
+    for (var i = 0; i < allMyClassH1.length; i++) {}
+}
 
 //  ex 3
 // Write a function that inserts an element into the body of the currently loaded page.
@@ -25,10 +28,10 @@ var allMyClassH1 = document.getElementsByClassName("container");
 var allMyH1 = document.getElementsByTagName("h1");
 console.log(allMyH1);
 setTimeout(function () {
-    mainHeading.style.zIndex = 2147483647;
+    mainHeading.style.zIndex = "2147483647";
     mainHeading.style.paddingLeft = "20px";
     mainHeading.style.paddingTop = "100px";
     mainHeading.style.fontSize = "200px";
     mainHeading.style.innerText = "Awesome!";
     console.log(mainHeading.style);
-}, 2000);
+}, 1000);
