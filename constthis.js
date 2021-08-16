@@ -48,16 +48,16 @@ console.log(square.getArea());
 // });
 
 function invertCase(str) {
-    var switchDown = [];
+    var switchDown = "";
     for (var i = 0; i < str.length; i++) {
         if (str[i] == str[i].toUpperCase()) {
-            switchDown += str.toLowerCase();
-        } else (str[i] == str[i].toLowerCase()) {
-            switchDown += str.toUpperCase();
-        } 
-    };
+            switchDown += str[i].toLowerCase();
+        } else {
+            switchDown += str[i].toUpperCase();
+        }
+    }
+    return switchDown;
 }
-console.log(invertCase("friday NIGHT!13"));
 
 // // This function should return a new string with all the same characters as the string that was passed in
 // // but with the cases of the alphabetic characters switched.

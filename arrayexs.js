@@ -52,5 +52,4 @@ function getLessThanZero(arr) {
 var lessNumber = [20, -15, 30, -25];
 console.log(getLessThanZero(lessNumber));
 
-/
 
