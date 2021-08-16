@@ -17,21 +17,23 @@ function changeParameter(selector) {
 // Write a function that expects a string representing a class name to be passed as a parameter.
 // The function should return an array containing all the elements in the document that have the class that was passed in.
 function classToCall(container) {
-    var allMyClassH1 = document.getElementsByClassName(container);
+    var emptyArr = [];
+    var allMyClassH1 = document.getElementsByClassName("container");
     console.log(allMyClassH1);
-    for (var i = 0; i < allMyClassH1.length; i++) {}
+    for (var i = 0; i < allMyClassH1.length; i++) {
+        emptyArr.push(allMyClassH1[i]);
+    }
+    return emptyArr;
 }
+classToCall("calleveryone");
 
 //  ex 3
 // Write a function that inserts an element into the body of the currently loaded page.
 // That element should have fixed position, z-index of 2147483647, left of 20px, top of 100px, font-size of 200px, and contain the text 'AWESOME'.
-var allMyH1 = document.getElementsByTagName("h1");
-console.log(allMyH1);
-setTimeout(function () {
-    mainHeading.style.zIndex = "2147483647";
-    mainHeading.style.paddingLeft = "20px";
-    mainHeading.style.paddingTop = "100px";
-    mainHeading.style.fontSize = "200px";
-    mainHeading.style.innerText = "Awesome!";
-    console.log(mainHeading.style);
-}, 1000);
+var newList = document.createElement("body");
+var elements = document.createTextNode(
+    (style =
+        "position:fixed,z-index:2147483647;left:20px;top:100px;font-size:200px" >
+        "AWESOME")
+);
+newList.appendChild(elements);
