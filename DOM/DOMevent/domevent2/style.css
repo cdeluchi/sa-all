@@ -1,1 +1,14 @@
-
+body {
+    background-color: #c3c9e9;
+}
+#changeType {
+    position: absolute;
+    left: 35%;
+    width: 50%;
+    height: 50%;
+}
+input {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+}
