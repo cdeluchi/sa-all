@@ -4,8 +4,9 @@ body {
     background-color: #dcb8cb;
 }
 #box {
+    position: absolute;
+    left: 50%;
     width: 100px;
     height: 100px;
-    position: absolute;
     background-color: #ceeaf7;
 }
