@@ -1,0 +1,11 @@
+/* DOM event 1 */
+
+body {
+    background-color: #dcb8cb;
+}
+#box {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: #ceeaf7;
+}
