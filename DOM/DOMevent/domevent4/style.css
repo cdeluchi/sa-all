@@ -1,0 +1,18 @@
+/* Make a page that has on it an element that is 200px by 200px in size and has a solid background color.
+Nest within that element another element that is 50px by 50px in size and has a different solid background color. */
+
+body {
+    background-color: #fec0ce;
+}
+
+#boxoutside {
+    width: 200px;
+    height: 200px;
+    background-color: #d183c9;
+}
+
+#boxinside {
+    width: 50px;
+    height: 50px;
+    background-color: #8b5fbf;
+}
