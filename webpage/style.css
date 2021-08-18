@@ -89,7 +89,7 @@ section {
     overflow: hidden;
     background-color: #ccc;
     padding: 0px;
-    margin: 20px;
+    margin: 30px;
 }
 
 img {
@@ -103,25 +103,25 @@ img {
 .cat {
     float: left;
     width: 50%;
-    padding: 20px;
+    padding: 10px;
     display: inline-flex;
 }
 .world {
     float: right;
     width: 50%;
-    padding: 20px;
+    padding: 10px;
     display: inline-flex;
 }
 .swim {
     float: left;
     width: 50%;
-    padding: 20px;
+    padding: 10px;
     display: inline-flex;
 }
 .column {
     float: right;
     width: 50%;
-    padding: 20px;
+    padding: 10px;
     display: inline-flex;
 }
 
@@ -154,8 +154,8 @@ p {
     height: 100vh;
     background-color: white;
     text-align: center;
-    right: -20%;
-    top: 0;
+    right: 10%;
+    top: 10px;
 }
 
 .side-nav > p {
@@ -173,13 +173,16 @@ p {
     transition-duration: 2s;
 }
 
+#closeButton > p {
+    font-size: 15px;
+}
+
 .on {
     transform: translateX(-350px);
 }
 
 .hidden {
     transition-property: all;
-    transition-duration: 1s;
     visibility: hidden;
 }
 
