@@ -138,6 +138,51 @@ p {
     margin: 0;
 }
 
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(247, 219, 245, 0.5);
+    transform: translate(-350px);
+    visibility: hidden;
+    transition-property: transform;
+    transition-duration: 2s;
+}
+
+.side-nav {
+    position: absolute;
+    width: 350px;
+    height: 100vh;
+    background-color: white;
+    text-align: center;
+    right: -20%;
+    top: 0;
+}
+
+.side-nav > p {
+    margin-bottom: 3px;
+    font-size: 30px;
+}
+
+.side-nav > a {
+    display: block;
+    width: 350px;
+    margin-top: 8px;
+    padding: 20px 5px;
+    font-size: 20px;
+    transition-property: transform;
+    transition-duration: 2s;
+}
+
+.on {
+    transform: translateX(-350px);
+}
+
+.hidden {
+    transition-property: all;
+    transition-duration: 1s;
+    visibility: hidden;
+}
+
 /* media queries */
 
 @media screen and (min-width: 600px) and (max-width: 800px) {
