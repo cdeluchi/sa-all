@@ -1,0 +1,37 @@
+/* ex 3 */
+/* Copy the HTML document you created and 
+add to the <main> element a single <img> tag 
+with its src attribute set to http://bubble-medicine.glitch.me/gif?tag=kitty. 
+This url will give you a random cat photo. 
+It will not be possible to know the width and height of the image that will be displayed in advance. 
+Make the <main> element a flex container and have the <img> element appear centered vertically and horizontally. */
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+header {
+    background-color: #dcb8cb;
+    height: 70px;
+}
+
+main {
+    flex-grow: 1;
+    background-color: #d5c9df;
+}
+main > img {
+    align-items: center;
+}
+footer {
+    background-color: #ccd7e4;
+    height: 30px;
+}
