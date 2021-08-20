@@ -22,14 +22,14 @@ body {
 }
 
 #carousel img.seethecat {
-    transform: translateX(-100%);
+    transform: translateX(0);
     transition-property: transform;
     transition-duration: 3s;
 }
 #carousel img.dontseethecat {
     transition: translateX(-100%);
     transition-property: transform;
-    transition-duration: 3s;
+    transition-duration: 1s;
 }
 #smalldots {
     position: absolute;
