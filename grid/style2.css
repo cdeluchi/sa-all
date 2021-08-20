@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    gap: 2px;
+    height: 200px;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(1, 200px);
+}
+
+.boxgray {
+    display: grid;
+    background-color: gray;
+    grid-template-columns: repeat (2, 100px);
+    grid-template-rows: repeat (2, 100px);
+}
+
+.orange {
+    background-color: orange;
+    grid-row: 1 / span 2;
+    grid-column: 2 / span 1;
+}
+
+.boxblack {
+    display: grid;
+    background-color: black;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat (2, 100px);
+}
+
+.yellow {
+    background-color: yellow;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.boxblue {
+    display: grid;
+    background-color: blue;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat (2, 100px);
+}
+
+.green {
+    background-color: green;
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.boxpurple {
+    background-color: purple;
+    grid-row: 1 / span 1;
+    grid-column: 4 / span 1;
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(2, 150px);
+}
+
+.pink {
+    background-color: pink;
+    width: 50%;
+    height: 50%;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
