@@ -22,10 +22,35 @@ body {
 }
 
 #carousel img.seethecat {
-    transform: translateX(0);
+    transform: translateX(-100%);
     transition-property: transform;
-    transition-duration: 1s;
+    transition-duration: 3s;
 }
 #carousel img.dontseethecat {
     transition: translateX(-100%);
+    transition-property: transform;
+    transition-duration: 3s;
+}
+#smalldots {
+    position: absolute;
+    top: 500px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: cornflowerblue solid 2px;
+    margin: 10px;
+    background-color: blue;
+}
+
+.dot.on {
+    background-color: darkslateblue;
+}
+.dot:hover {
+    cursor: pointer;
 }
