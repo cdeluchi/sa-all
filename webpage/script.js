@@ -1,23 +1,21 @@
-console.log("menu");
+// console.log("menu");
+var menu = document.querySelector(".menu");
 var showMenu = document.querySelector(".overlay");
 var hideMenu = document.querySelector(".side-nav");
-var X = document.getElementsById("closeButton");
+var x = document.getElementById("closeButton");
 
-function sideMenu() {
-    showMenu.addEventListener("click", function () {
-        menu.classList.add("on");
-    });
-
-    hideMenu.addEventListener("click", function () {
-        menu.classList.remove("hidden");
-    });
-}
+menu.addEventListener("click", function () {
+    menu.classList.add("on");
+});
+menu.addEventListener("click", function () {
+    menu.classList.add("hidden");
+});
 
 var sideBarMenu = document.getElementsById("menu");
 sideBarMenu.addEventListener("click", function () {
-    sideNav.classList.add("on");
-    sideNav.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+    hideMenu.classList.add("on");
+    hideMenu.classList.remove("hidden");
+    showMenu.classList.remove("hidden");
 });
-X.addEventListener("click");
-overlay.addEventListener("click");
+x.addEventListener("click");
+showMenu.addEventListener("click");
