@@ -6,15 +6,15 @@ function logType(singleArg) {
     } else if (typeof singleArg == "string") {
         return "string";
     } else if (typeof singleArg == "bigint") {
-        return BigInt;
+        return "BigInt";
     } else if (typeof singleArg === "null") {
-        return null;
+        return "null";
     } else if (typeof singleArg == "number") {
-        return Number;
+        return "Number";
     } else if (typeof singleArg == "true") {
-        return Boolean;
+        return "Boolean";
     } else if (typeof singleArg == "not a number") {
-        return isNaN(NaN);
+        return isNaN("NaN");
     } else {
         return "I have no Idea!";
     }
@@ -28,6 +28,19 @@ console.log("true");
 console.log("not a number");
 console.log("I have no Idea!");
 
+// ei 2
+// function logType(singleArg){
+//     switch (typeof singleArg) {
+//         case "undefined":
+//             console.log("undefined");
+//             break;
+//         case "null":
+//             console.log("null");
+//             break;
+//     }
+// ...
+// }
+
 // exercice 2
 // precisa criar uma variavel vazia para poder conter os dados novos que vamos mandar
 // prop statement
@@ -39,11 +52,9 @@ var a = {
 };
 var b = {};
 for (var prop in a) {
-    console.log(`${prop}: ${a[prop]}`);
-    console.log("value of a", a[prop]);
-    var valueA = a[prop];
-    var propertyA = prop;
-    b[valueA] = propertyA;
+    var newVar = a[prop];
+    var newVar2 = prop;
+    b[newVar] = newVar2;
 }
 console.log(b);
 
