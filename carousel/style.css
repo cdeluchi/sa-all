@@ -13,8 +13,6 @@ body {
 
 #carousel img {
     position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -24,7 +22,7 @@ body {
 #carousel img.seethecat {
     transform: translateX(0);
     transition-property: transform;
-    transition-duration: 3s;
+    transition-duration: 5s;
 }
 #carousel img.dontseethecat {
     transition: translateX(-100%);
