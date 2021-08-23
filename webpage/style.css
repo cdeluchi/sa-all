@@ -237,6 +237,10 @@ p {
     display: inline-block;
     font-weight: bold;
 }
+.x {
+    text-align: right;
+    cursor: pointer;
+}
 
 /* media queries */
 
