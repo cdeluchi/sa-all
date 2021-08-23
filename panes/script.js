@@ -14,21 +14,4 @@ $(function () {
 
 var left = 0;
 
-slider.on("mousedown", function (e) {
-    e.preventDefault();
-
-    $(document).on("mousemove", function (e) {
-        slider.css({
-            left: e.clickX + "px",
-        });
-
-        $(top).css({
-            width: e.clientX + "px",
-        });
-    });
-
-    $(document).on("mouseup", function (e) {
-        $(document).unbind();
-    });
-});
 
