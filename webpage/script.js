@@ -11,7 +11,7 @@ menu.addEventListener("click", function () {
     menu.classList.add("hidden");
 });
 
-var sideBarMenu = document.getElementsById("menu");
+var sideBarMenu = document.getElementById("menu");
 sideBarMenu.addEventListener("click", function () {
     hideMenu.classList.add("on");
     hideMenu.classList.remove("hidden");
@@ -20,4 +20,26 @@ sideBarMenu.addEventListener("click", function () {
 x.addEventListener("click");
 showMenu.addEventListener("click");
 
-var popup = $("popup");
+// pop Up hover
+
+$(window).load(function () {
+    $(".clickpopup").click(function () {
+        $(".hoverpopup").show();
+    });
+    $(".hoverpopup").click(function () {
+        $(".hoverpopup").hide();
+    });
+    $(".closepopup").click(function () {
+        $(".hoverpopup").hide();
+    });
+});
+
+$(function clickbutton(e) {
+    $(".popup").on("click", function () {
+        $(".popup, .hoverpopup").addClass("active");
+    });
+});
+
+$(".close, .popup").on("click", function () {
+    $(".popup, .hoverpopup").removeClass("active");
+});
