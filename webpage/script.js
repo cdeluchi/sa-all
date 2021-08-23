@@ -19,3 +19,5 @@ sideBarMenu.addEventListener("click", function () {
 });
 x.addEventListener("click");
 showMenu.addEventListener("click");
+
+var popup = $("popup");
