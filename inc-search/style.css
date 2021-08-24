@@ -4,3 +4,7 @@
 .highlight {
     background-color: turquoise;
 }
+
+.boxfocus {
+    border: red;
+}

@@ -9,6 +9,8 @@
     // #1 INPUT EVENT
     searchField.on("input", function () {
         var inputVal = searchField.val().toLowerCase();
+        // need to change when the mouse is doing nothing do not apper any country
+        //blur
         if (inputVal.length == 0) {
             resultsContainer.hide();
             return;
@@ -60,13 +62,30 @@
         // when the user click at the country the another country should desapear.
         resultsContainer.hide();
     });
-    // **** need to change when the mouse is doing nothing do not apper any country
+    // now when the mouse hover in this country the color of the mouse should change.
     resultsContainer.on("mouseover", "p", function (e) {
         $(".highlight").removeClass("highlight");
         $(e.target).addClass("highlight");
-        console.log(e.target);
+        // console.log(e.target);
     });
-    // now when the mouse hover in this country the color of the mouse should change.
+
+    // I can hover the
+    // var countryDown = 0;
+    resultsContainer.click("keydown", function (event) {
+        if (event.which == 40) {
+            event.highlight();
+        } else if (event.which == 38) {
+            event.highlight();
+        } else event.which == 13;
+        event.highlight();
+    });
+
+    // need to do when the arrowdown need to stop.
+    //focus
+    searchField.ready(function () {
+        $("boxfocus").focus();
+        console.log("boxfocus");
+    });
 })([
     "Afghanistan",
     "Albania",
