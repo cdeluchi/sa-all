@@ -1,45 +1,27 @@
 (function (listOfCountries) {
-    // console.log("yeah you can actually write some logic", $);
-    // console.log("listOfCountries:", listOfCountries);
     var searchField = $("input");
-    // console.log("searchField:", searchField);
     var resultsContainer = $(".results-container");
-    // console.log("resultsContainer: ", resultsContainer);
 
     // #1 INPUT EVENT
     searchField.on("input", function () {
         var inputVal = searchField.val().toLowerCase();
-        // need to change when the mouse is doing nothing do not apper any country
-        //blur
         if (inputVal.length == 0) {
             resultsContainer.hide();
             return;
         }
         resultsContainer.show();
 
-        // console.log("input happening");
-        // console.log("inputVal:", inputVal);
-        // console.log("length of input:", inputVal.length);
         // 💥 IF the input field is empty, don't show any results
         var matchResults = [];
-        // loop over our countries and see if any of them start with letters matching the input val
         for (var i = 0; i < listOfCountries.length; i++) {
-            // console.log("country:", listOfCountries[i].indexOf(inputVal));
-            // check if a country starts with the input value
             if (listOfCountries[i].toLowerCase().indexOf(inputVal) === 0) {
-                // console.log("match found:", listOfCountries[i]);
                 matchResults.push(listOfCountries[i]);
-                // once our matchResults contains four countries end our loop and match search early
                 if (matchResults.length === 4) {
-                    // console.log("got four countries in my results");
                     break;
                 }
             }
         }
-        // console.log("matchResults:", matchResults);
 
-        // let's make our results show up on screen
-        // step 1: generate html elements for each of our country
         var htmlForCountries = "";
         // 💥 IF the user types gibbersih or sth that doesn't match anything, we need to render "no results"
         for (var j = 0; j < matchResults.length; j++) {
@@ -69,20 +51,28 @@
         // console.log(e.target);
     });
 
-    // I can hover the
-    // var countryDown = 0;
-    resultsContainer.click("keydown", function (event) {
-        if (event.which == 40) {
-            event.highlight();
-        } else if (event.which == 38) {
-            event.highlight();
-        } else event.which == 13;
-        event.highlight();
+    // KEY DOWN event
+    resultsContainer.on("keydown", function (event) {
+        if (event.keyCode === 40) {
+            //arrow down
+            //loop for all "p" country and apply the .class
+            for (var i = 0; i < $("p").length; i++) {
+                if ($("p").eq(i).hasClass("highllight")) {
+                    // when has no more "p" stop here
+                    break;
+                }
+            }
+            if (i !== 0) {
+                // use remove class before add class as we used in #2
+                $("p").eq(i).removeClass("highlight");
+                $("p")
+                    .eq(i - 1)
+                    .addClass("highlight");
+                console.log("highlight");
+            }
+        }
     });
-
-    // need to do when the arrowdown need to stop.
-    //focus
-    searchField.ready(function () {
+    resultsContainer.ready(function () {
         $("boxfocus").focus();
         console.log("boxfocus");
     });
