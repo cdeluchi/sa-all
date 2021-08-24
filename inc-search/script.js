@@ -8,6 +8,7 @@
 
     // #1 INPUT EVENT
     searchField.on("input", function () {
+        resultsContainer.show();
         // console.log("input happening");
         var inputVal = searchField.val().toLowerCase();
         // console.log("inputVal:", inputVal);
@@ -46,21 +47,23 @@
     // #2 MOUSEOVER EVENT
     // problem, the p tags that we want to listen on for the mouseover, are not present when the script initially loads, so we need to attach our listener to sth that IS there upon loading
 
-    $(document).on("mouseDown", function () {
-        console.log("when mousedown in a country it will fix at the input box");
-        var mouseDown = resultsContainer;
-        jQresultContainer.append(searchField);
-        console.log("show the input result");
-        jQsearchField = $(".input");
-
+    resultsContainer.on("mousedown", function (event) {
+        // console.log("when mousedown in a country it will fix at the input box");
+        var country = $(event.target).html();
+        // console.log($(event.target).html());
+        searchField.val(country);
         // when the user click at the country the another country should desapear.
-        $(resultsContainer).on("searchField", function () {
-            var searchOff = resultsContainer;
-            console.log("result should appear here:", resultsContainer);
-            for (var i = 0; i < resultsContainer.length; i++);
-            return ["country"];
-        });
+        resultsContainer.hide();
+        resultsContainer.hide(searchField);
     });
+    // **** need to change when the mouse is doing nothing do not apper any country
+    resultsContainer.hover(function(){
+       resultsContainer.append($(".highlight)");
+    }, function(){
+        resultsContainer.(".highlight").last().remove();
+    }
+    );
+    // now when the mouse hover in this country the color of the mouse should change.
 })([
     "Afghanistan",
     "Albania",
