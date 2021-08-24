@@ -8,9 +8,14 @@
 
     // #1 INPUT EVENT
     searchField.on("input", function () {
-        resultsContainer.show();
-        // console.log("input happening");
         var inputVal = searchField.val().toLowerCase();
+        if (inputVal.length == 0) {
+            resultsContainer.hide();
+            return;
+        }
+        resultsContainer.show();
+
+        // console.log("input happening");
         // console.log("inputVal:", inputVal);
         // console.log("length of input:", inputVal.length);
         // 💥 IF the input field is empty, don't show any results
@@ -54,15 +59,13 @@
         searchField.val(country);
         // when the user click at the country the another country should desapear.
         resultsContainer.hide();
-        resultsContainer.hide(searchField);
     });
     // **** need to change when the mouse is doing nothing do not apper any country
-    resultsContainer.hover(function(){
-       resultsContainer.append($(".highlight)");
-    }, function(){
-        resultsContainer.(".highlight").last().remove();
-    }
-    );
+    resultsContainer.on("mouseover", "p", function (e) {
+        $(".highlight").removeClass("highlight");
+        $(e.target).addClass("highlight");
+        console.log(e.target);
+    });
     // now when the mouse hover in this country the color of the mouse should change.
 })([
     "Afghanistan",
