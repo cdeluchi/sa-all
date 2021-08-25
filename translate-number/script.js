@@ -7,9 +7,10 @@ console.log("translate Number", $);
         }
         throw new Error("Bad number");
     }
-
+    // the function receive an array with the numbers in German. This numbers need to start with 0.
     function translateNumberToGerman() {
         var numDeutch = [
+            "null",
             "eins",
             "zwei",
             "drei",
@@ -22,11 +23,13 @@ console.log("translate Number", $);
             "zehn",
         ];
         try {
+            // then create a alert with this array and call to the function asForNumber
             alert(numDeutch[parseInt(askForNumber())]);
         } catch (err) {
             console.log(err);
             translateNumberToGerman(err);
         }
     }
+    // here we need to call this function to return our numbers in German
     translateNumberToGerman();
 })();
