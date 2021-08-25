@@ -8,7 +8,7 @@ console.log("translate Number", $);
         throw new Error("Bad number");
     }
     function translateNumberToGerman() {
-        var nummerDeutch = [
+        var numDeutch = [
             "eins",
             "zwei",
             "drei",
@@ -20,5 +20,14 @@ console.log("translate Number", $);
             "neun",
             "zehn",
         ];
+
+        try {
+            alert(numDeutch[parseInt("translateNumberToGerman")]);
+            askForNumber();
+        } catch (err) {
+            console.log(err);
+            translateNumberToGerman(err);
+        }
     }
+    translateNumberToGerman();
 });
