@@ -1,11 +1,11 @@
 (function (listOfCountries) {
     var searchField = $("input");
     var resultsContainer = $(".results-container");
-    var getAjax;
 
     // #1 INPUT EVENT
     searchField.on("input", function () {
         var inputVal = searchField.val().toLowerCase();
+        var getAjax;
         getAjax = [];
         if (inputVal.length == 0) {
             resultsContainer.hide();
@@ -18,15 +18,14 @@
                 q: inputVal,
             },
             success: function (response) {
-                if (inputVal === inputVal.val().toLowerCase()) {
-                    getAjax = response;
+                if (inputVal === input.val().toLowerCase()) {
+                    matches = response;
                     renderResults();
                 } else {
                     console.log("incorrect results");
                 }
             },
         });
-        resultsContainer.show();
     });
 
     // 💥 IF the input field is empty, don't show any results
