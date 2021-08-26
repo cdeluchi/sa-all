@@ -1,20 +1,20 @@
+$.ajax({
+    method: "GET",
+    url: "data.json",
+    success: function (arrayOfHeadlines) {
+        console.log(arrayOfHeadlines);
+        for (var i = 0; i < arrayOfHeadlines.length; i++) {
+            $("body").html("<div id=>" + "</div>");
+            console.log("body");
+        }
+        moveHeadlines();
+    },
+});
 (function () {
-    $.ajax({
-        method: "GET",
-        url: "data.json",
-        success: function (arrayOfHeadlines) {
-            console.log(arrayOfHeadlines);
-            for (var i = 0; i < arrayOfHeadlines.length; i++){
-                html +=
-                $("body").html("<div id="ticker"> " +"<div id="headlines"> " + data.join(", ")  + "</div>" + "</div>");
-            }
-            moveHeadlines();
-        },
-    });
     var headlines = document.getElementById("headlines");
     var a = headlines.getElementsByTagName("a");
     var left = headlines.offsetLeft;
-    var myReqId;
+    var stopRun;
 
     function moveHeadlines() {
         left--;
@@ -23,18 +23,18 @@
             left = 0;
         }
         headlines.style.left = left + "px";
-        myReqId = requestAnimationFrame(moveHeadlines);
+        stopRun = requestAnimationFrame(moveHeadlines);
     }
     moveHeadlines();
 
-    function stopHeadlines(myReqId) {
-        window.cancelAnimationFrame(myReqId);
+    function stopHeadlines(stopRun) {
+        window.cancelAnimationFrame(stopRun);
     }
 
     for (var i = 0; i < a.length; i++) {
         a[i].addEventListener("mouseenter", function () {
             this.classList.add("hover");
-            stopHeadlines(myReqId);
+            stopHeadlines(stopRun);
         });
         a[i].addEventListener("mouseleave", function () {
             this.classList.remove("hover");
