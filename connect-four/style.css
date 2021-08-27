@@ -1,0 +1,35 @@
+body {
+    background-color: palevioletred;
+}
+
+#board {
+    display: flex;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    /* background: magenta; */
+    overflow: hidden;
+}
+
+.hole {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 50px solid darkslategray;
+    /* background-color: white; */
+    position: relative;
+    /* left: 10px;
+    top: 10px; */
+    left: -40px;
+    top: -40px;
+}
+
+.player1 .hole {
+    background-color: royalblue;
+}
+
+.player2 .hole {
+    background-color: seagreen;
+}
