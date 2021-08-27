@@ -65,12 +65,6 @@
         //     : (currentPlayer = "player1");
     }
 
-    function displayWinner() {
-        $(".column").off("click");
-        $("h3").css("visibility", "visible");
-        $("#current-player").html(currentPlayer);
-    }
-
     //  COLUMN VICTORY
 
     function checkForColumnVictory(slots) {
@@ -122,7 +116,7 @@
             if (slotsInRow.eq(i).hasClass(currentPlayer)) {
                 count++;
                 for (var j = 0; j < slotsInRow.length; j++) {}
-                for (var k = 0; k < slots.length; k++) {}
+                // for (var k = 0; k < slots.length; k++) {}
             }
         }
     }
