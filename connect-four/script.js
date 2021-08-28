@@ -33,115 +33,81 @@
 
         // let's check here for victories before we switch players
         if (checkForVictoryColumn(slotsInCol)) {
-            // console.log(slotsInCol);
-            winner(); // **** first we want to see if this player is the winner
-            // if this is truthy, then we're going to do a victory dance!
             console.log("you have a column victory!!!!!");
+            alert("You're the winner!🤸 🎉");
+            $("#restart").on("click", function (alert) {
+                playAgain.css("visibility", hidden);
+            });
+            console.log("playAgain");
+            window.location.reload();
         } else if (checkForVictoryRow(slotsInRow)) {
-            winner(); // *** check again if the winner is this
             console.log("you have a row victory!!!");
-            // } else if (checkForVictoryDiagonal(slots, arrayDiagona)) {
-            //     winner();
-            // }
+
+            alert("You're the winner!🤸 🎉");
+
+            window.location.reload();
 
             // console.log("nextplayer is ====> ", currentPlayer);
         }
-    });
 
-    function switchPlayer() {
-        if (currentPlayer === "player1") {
-            currentPlayer = "player2";
-        } else {
-            // we get in here if the currentplayer is player2
-            currentPlayer = "player1";
+        //  button restart
+        function displayWinner() {
+            alert.on("click");
+            $("#restart").css("visibility", "visible");
+            $("#restart").html(currentPlayer);
         }
-    }
-    switchPlayer();
 
-    function checkForVictoryColumn(slots) {
-        var count = 0;
-        // we're going to write some logic here to check to see who won!
-        // this function expects us to pass it a set of slots so it can do its check!
-        for (var i = 0; i < slots.length; i++) {
-            // console.log(slots.eq(i).hasClass(currentPlayer));
-            if (slots.eq(i).hasClass(currentPlayer)) {
-                count++;
-                if (count === 4) {
-                    return true;
-                }
+        // function restart() {
+        //     playAgain.innerHTML = "";
+        //     loadDOM();
+        //     (restart.style.display = "visibility"), "visible";
+        // }
+
+        function switchPlayer() {
+            if (currentPlayer === "player1") {
+                currentPlayer = "player2";
             } else {
-                count = 0;
+                // we get in here if the currentplayer is player2
+                currentPlayer = "player1";
             }
         }
-        // console.log("count outside loop: ", count);
-    }
+        switchPlayer();
 
-    function checkForVictoryRow(slots) {
-        var count = 0;
-        for (var i = 0; i < slots.length; i++) {
-            // console.log(slots.eq(i).hasClass(currentPlayer));
-            if (slots.eq(i).hasClass(currentPlayer)) {
-                count++;
-                if (count === 4) {
-                    return true;
+        function checkForVictoryColumn(slots) {
+            var count = 0;
+            // we're going to write some logic here to check to see who won!
+            // this function expects us to pass it a set of slots so it can do its check!
+            for (var i = 0; i < slots.length; i++) {
+                // console.log(slots.eq(i).hasClass(currentPlayer));
+                if (slots.eq(i).hasClass(currentPlayer)) {
+                    count++;
+                    if (count === 4) {
+                        return true;
+                    }
+                } else {
+                    count = 0;
                 }
-            } else {
-                count = 0;
             }
+            // console.log("count outside loop: ", count);
         }
-        return false;
-        // console.log("count outside loop: ", count);
-    }
 
-    function checkForVictoryDiagonal(slots, diags) {
-        var count = 0;
-        // var diags = [];
-        for (var i = 0; i < slots.length; i++) {
-            var firstTry = slots[i][0];
-            var secondTry = slots[i][1];
-            var thirdTry = slots[i][2];
-            var forthTry = slots[i][3];
-            console.log(slots.eq(firstTry).hasClass(currentPlayer));
-            if (
-                slots.eq(firstTry).hasClass(currentPlayer) &&
-                slots.eq(secondTry).hasClass(currentPlayer) &&
-                slots.eq(thirdTry).hasClass(currentPlayer) &&
-                slots.eq(forthTry).hasClass(currentPlayer)
-            ) {
-                console.log("this is a winner?", $(currentPlayer));
-                return true;
-            }
-
-            for (var j = 0; j < diags.length; j++) {
-                var firstTry = diags[j][0];
-                var secondTry = diags[j][1];
-                var thirdTry = diags[j][2];
-                var forthTry = diags[j][3];
-                console.log(slots.eq(firstTry).hasClass(currentPlayer));
-
-                if (
-                    diags.eq(firstTry).hasClass(currentPlayer) &&
-                    diags.eq(secondTry).hasClass(currentPlayer) &&
-                    diags.eq(thirdTry).hasClass(currentPlayer) &&
-                    diags.eq(forthTry).hasClass(currentPlayer)
-                ) {
-                    return true;
+        function checkForVictoryRow(slots) {
+            var count = 0;
+            for (var i = 0; i < slots.length; i++) {
+                console.log(slots.eq(i).hasClass(currentPlayer));
+                if (slots.eq(i).hasClass(currentPlayer)) {
+                    count++;
+                    if (count === 4) {
+                        return true;
+                    }
+                } else {
+                    count = 0;
                 }
             }
             return false;
+            // console.log("count outside loop: ", count);
         }
-    }
-    checkForVictoryDiagonal();
-
-    // **** WINNER
-    function winner() {
-        //$(".column").on("click", function (e)
-        $(".column").on("click", function () {
-            console.log(winner);
-            $(".popup-overlay, .popup-content").addClass("win");
-        });
-    }
-    winner();
+    });
 })([
     [0, 7, 14, 21],
     [1, 8, 15, 22],
@@ -168,3 +134,34 @@
     [22, 27, 32, 37],
     [23, 28, 33, 38],
 ]);
+
+// animation
+(function () {
+    var text = document.querySelector(".four");
+    var strText = text.textContent;
+    var splitText = strText.split();
+    text.textContent = "";
+    console.log("splitText");
+
+    for (var i = 0; i < splitText.length; i++) {
+        text.innerHTML += "<span>" + splitText[i] + "</span>";
+    }
+
+    var char = 0;
+    var timer = setInterval(onTick, 50);
+    // function onTick() {
+    var span = text.querySelectorAll("span")[char];
+    span.classList.add(".fade");
+    // char++;
+    console.log("this is a function ", setInterval(onTick, 50));
+    if (char === splitText.length) {
+        complete();
+        return;
+    }
+
+    function complete() {
+        console.log(complete);
+        clearInterval(timer);
+        timer = null;
+    }
+})();

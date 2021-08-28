@@ -1,18 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap");
+
 body {
     background-color: rgb(221, 201, 204);
-}
-h1 {
-    text-align: center;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    color: mediumslateblue;
 }
 
 h3 {
     margin: 0 auto;
     text-align: center;
     border: 1px solid;
-    color: deeppink;
+    color: #f037a5;
     visibility: hidden;
 }
 
@@ -33,8 +29,8 @@ h3 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 50px solid rgb(35, 141, 141);
-    /* background-color: white; */
+    border: 50px solid #1e3163;
+    background-color: white;
     position: relative;
     /* left: 10px;
     top: 10px; */
@@ -43,9 +39,64 @@ h3 {
 }
 
 .player1 .hole {
-    background-color: royalblue;
+    background-color: #2d46b9;
 }
 
 .player2 .hole {
-    background-color: seagreen;
+    background-color: #f037a5;
+}
+
+.container {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-container {
+    width: 200px;
+    height: 200px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: teal; */
+    transition: 1s ease-in-out;
+    transform-style: preserve-3d;
+}
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+
+.card figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.card .front {
+    color: whitesmoke;
+    background: #f037a5;
+    border-radius: 50%;
+    border: 1px solid #2d46b9;
+}
+.card .back {
+    color: #2d46b9;
+    background: wheat;
+    border-radius: 50%;
+    border: 1px solid #2d46b9;
+    transform: rotateY(180deg);
+}
+h1 {
+    font-family: Rajdhani;
+    margin: 50px;
+}
+.card:hover {
+    transform: rotate(45deg);
 }
