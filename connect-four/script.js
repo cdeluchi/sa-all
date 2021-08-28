@@ -50,13 +50,6 @@
             // console.log("nextplayer is ====> ", currentPlayer);
         }
 
-        //  button restart
-        function displayWinner() {
-            alert.on("click");
-            $("#restart").css("visibility", "visible");
-            $("#restart").html(currentPlayer);
-        }
-
         // function restart() {
         //     playAgain.innerHTML = "";
         //     loadDOM();
