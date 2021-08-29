@@ -85,17 +85,19 @@ h3 {
     background: #f037a5;
     border-radius: 50%;
     border: 1px solid #2d46b9;
+    backface-visibility: hidden;
 }
 .card .back {
-    color: #2d46b9;
-    background: wheat;
+    color: whitesmoke;
+    background: #f037a5;
     border-radius: 50%;
     border: 1px solid #2d46b9;
     transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 h1 {
     font-family: Rajdhani;
-    margin: 50px;
+    margin: 60px;
 }
 .card:hover {
     transform: rotate(45deg);

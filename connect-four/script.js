@@ -30,7 +30,6 @@
 
         var slotsInRow = $(".row" + i);
         // console.log("slots in row: ", slotsInRow);
-
         // let's check here for victories before we switch players
         if (checkForVictoryColumn(slotsInCol)) {
             console.log("you have a column victory!!!!!");
@@ -42,20 +41,17 @@
             window.location.reload();
         } else if (checkForVictoryRow(slotsInRow)) {
             console.log("you have a row victory!!!");
-
             alert("You're the winner!🤸 🎉");
+            window.location.reload();
 
+            // console.log("nextplayer is ====> ", currentPlayer);
+        } else if (checkForVictoryDiagonal(slots, diags)) {
+            console.log("you have a row victory!!!");
+            alert("You're the winner!🤸 🎉");
             window.location.reload();
 
             // console.log("nextplayer is ====> ", currentPlayer);
         }
-
-        // function restart() {
-        //     playAgain.innerHTML = "";
-        //     loadDOM();
-        //     (restart.style.display = "visibility"), "visible";
-        // }
-
         function switchPlayer() {
             if (currentPlayer === "player1") {
                 currentPlayer = "player2";
@@ -100,45 +96,51 @@
             return false;
             // console.log("count outside loop: ", count);
         }
-        // function checkForVictoryDiagonal(slots, diags) {
-        //     var count = 0;
-        //     // var diags = [];
-        //     for (var i = 0; i < slots.length; i++) {
-        //         var firstTry = slots[i][0];
-        //         var secondTry = slots[i][1];
-        //         var thirdTry = slots[i][2];
-        //         var forthTry = slots[i][3];
-        //         console.log(slots.eq(firstTry).hasClass(currentPlayer));
-        //         if (
-        //             slots.eq(firstTry).hasClass(currentPlayer) &&
-        //             slots.eq(secondTry).hasClass(currentPlayer) &&
-        //             slots.eq(thirdTry).hasClass(currentPlayer) &&
-        //             slots.eq(forthTry).hasClass(currentPlayer)
-        //         ) {
-        //             console.log("this is a winner?", $(currentPlayer));
-        //             return true;
-        //         }
+        function checkForVictoryDiagonal(slots, diags) {
+            // var count = 0;
+            // var diags = [];
+            // It's diags, the array of sets of indexes, that you need to loop through. For each set, you want to check to see if the element at each of the four indexes has the current player class. If so, victory!
+            for (var i = 0; i < diags.length; i++) {
+                var firstTry = diags[i][0];
+                var secondTry = diags[i][1];
+                var thirdTry = diags[i][2];
+                var forthTry = diags[i][3];
+                //         console.log(slots.eq(firstTry).hasClass(currentPlayer));
+                if (
+                    slots.eq(firstTry).hasClass(currentPlayer) &&
+                    slots.eq(secondTry).hasClass(currentPlayer) &&
+                    slots.eq(thirdTry).hasClass(currentPlayer) &&
+                    slots.eq(forthTry).hasClass(currentPlayer)
+                ) {
+                    console.log("this is a winner?", $(currentPlayer));
+                    return true;
+                }
+            }
+            // diags[j] will be a number. It is the index of a slot.
+            // You can use that index to find the slot.
+            // If you have stored in a variable named slots a jQuery object containing the 42 slots, then slots.eq(diags[j])
+            // would give you the element.
+            //             var secondTry = diags[j][1];
+            //             var thirdTry = diags[j][2];
+            //             var forthTry = diags[j][3];
+            //             console.log(slots.eq(firstTry).hasClass(currentPlayer));
 
-        //         for (var j = 0; j < diags.length; j++) {
-        //             var firstTry = diags[j][0];
-        //             var secondTry = diags[j][1];
-        //             var thirdTry = diags[j][2];
-        //             var forthTry = diags[j][3];
-        //             console.log(slots.eq(firstTry).hasClass(currentPlayer));
-
-        //             if (
-        //                 diags.eq(firstTry).hasClass(currentPlayer) &&
-        //                 diags.eq(secondTry).hasClass(currentPlayer) &&
-        //                 diags.eq(thirdTry).hasClass(currentPlayer) &&
-        //                 diags.eq(forthTry).hasClass(currentPlayer)
-        //             ) {
-        //                 return true;
-        //             }
-        //         }
-        //         return false;
-        //     }
-        // }
-        // checkForVictoryDiagonal();
+            //             if (
+            //                 diags.eq(firstTry).hasClass(currentPlayer) &&
+            //                 diags.eq(secondTry).hasClass(currentPlayer) &&
+            //                 diags.eq(thirdTry).hasClass(currentPlayer) &&
+            //                 diags.eq(forthTry).hasClass(currentPlayer)
+            //             ) {
+            //                 return true;
+            //             }
+            //         }
+            //         return false;
+            //     }
+            // }
+            // I think you want to call this function only if there isn't a vertical or horizontal victory.
+            // checkForVictoryDiagonal();
+            return false;
+        }
     });
 })([
     [0, 7, 14, 21],
@@ -168,32 +170,32 @@
 ]);
 
 // animation
-(function () {
-    var text = document.querySelector(".four");
-    var strText = text.textContent;
-    var splitText = strText.split();
-    text.textContent = "";
-    console.log("splitText");
+// (function () {
+//     var text = document.querySelector(".four");
+//     var strText = text.textContent;
+//     var splitText = strText.split();
+//     text.textContent = "";
+//     console.log("splitText");
 
-    for (var i = 0; i < splitText.length; i++) {
-        text.innerHTML += "<span>" + splitText[i] + "</span>";
-    }
+//     for (var i = 0; i < splitText.length; i++) {
+//         text.innerHTML += "<span>" + splitText[i] + "</span>";
+//     }
 
-    var char = 0;
-    var timer = setInterval(onTick, 50);
-    // function onTick() {
-    var span = text.querySelectorAll("span")[char];
-    span.classList.add(".fade");
-    // char++;
-    console.log("this is a function ", setInterval(onTick, 50));
-    if (char === splitText.length) {
-        complete();
-        return;
-    }
+//     var char = 0;
+//     var timer = setInterval(onTick, 50);
+//     // function onTick() {
+//     var span = text.querySelectorAll("span")[char];
+//     span.classList.add(".fade");
+//     // char++;
+//     console.log("this is a function ", setInterval(onTick, 50));
+//     if (char === splitText.length) {
+//         complete();
+//         return;
+//     }
 
-    function complete() {
-        console.log(complete);
-        clearInterval(timer);
-        timer = null;
-    }
-})();
+//     function complete() {
+//         console.log(complete);
+//         clearInterval(timer);
+//         timer = null;
+//     }
+// })();
