@@ -100,6 +100,45 @@
             return false;
             // console.log("count outside loop: ", count);
         }
+        // function checkForVictoryDiagonal(slots, diags) {
+        //     var count = 0;
+        //     // var diags = [];
+        //     for (var i = 0; i < slots.length; i++) {
+        //         var firstTry = slots[i][0];
+        //         var secondTry = slots[i][1];
+        //         var thirdTry = slots[i][2];
+        //         var forthTry = slots[i][3];
+        //         console.log(slots.eq(firstTry).hasClass(currentPlayer));
+        //         if (
+        //             slots.eq(firstTry).hasClass(currentPlayer) &&
+        //             slots.eq(secondTry).hasClass(currentPlayer) &&
+        //             slots.eq(thirdTry).hasClass(currentPlayer) &&
+        //             slots.eq(forthTry).hasClass(currentPlayer)
+        //         ) {
+        //             console.log("this is a winner?", $(currentPlayer));
+        //             return true;
+        //         }
+
+        //         for (var j = 0; j < diags.length; j++) {
+        //             var firstTry = diags[j][0];
+        //             var secondTry = diags[j][1];
+        //             var thirdTry = diags[j][2];
+        //             var forthTry = diags[j][3];
+        //             console.log(slots.eq(firstTry).hasClass(currentPlayer));
+
+        //             if (
+        //                 diags.eq(firstTry).hasClass(currentPlayer) &&
+        //                 diags.eq(secondTry).hasClass(currentPlayer) &&
+        //                 diags.eq(thirdTry).hasClass(currentPlayer) &&
+        //                 diags.eq(forthTry).hasClass(currentPlayer)
+        //             ) {
+        //                 return true;
+        //             }
+        //         }
+        //         return false;
+        //     }
+        // }
+        // checkForVictoryDiagonal();
     });
 })([
     [0, 7, 14, 21],
