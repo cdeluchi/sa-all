@@ -1,11 +1,12 @@
 (function () {
+    var nextUrl;
     $("#submit-btn").on("click", function () {
         console.log(
             "user clicked submit button wants to make reuqest for whatever they input and slected"
         );
         var userInput = $("input[name=user-input]").val();
         console.log("userInput", userInput);
-        var albumOrArtist = $("select").val();
+        var albumOrArtist = $("select").val(); // .val() = used to get the values of form elements such as input, select and textarea
         $.ajax({
             url: "https://spicedify.herokuapp.com/spotify",
             method: "GET",
@@ -43,20 +44,19 @@
                     // <a href="someLinkWeGotFromTheApi"><img src="theSrcToTheImage" alt=""><p>TheNameWeGotFromTheApi</p></a>
                     // console.log(imgUrl);
                 }
-                var noResults = "";
-                responseData.items[i];
-                if (responseData.items[i] != 0) {
-                    noResults = responseData.items[i];
-                    alert("Try again!");
-                    // console.log("we have no results", noResults);
-                }
-                var nextUrl =
+                // var noResults = "";
+                // responseData.items[i];
+                // if (responseData.items[i] != 0) {
+                //     noResults = responseData.items[i];
+                //     alert("Try again!");
+                //     // console.log("we have no results", noResults);
+                // }
+                nextUrl =
                     responseData.next &&
                     responseData.next.replace(
                         "api.spotify.com/v1/search",
                         "spicedify.herokuapp.com/spotify"
                     );
-
                 $(".results-container").html(myHtml);
             },
         });
@@ -64,30 +64,53 @@
 
     // button More
     $("#more").on("click", function () {
-        console.log(
-            "user clicked more button wants to make reuqest for whatever they input and slected"
-        );
-        var userInput = $("input[name=userinput]").val();
-        console.log("userInput", userInput);
-        // var AlbumOrArtist = $("select").val();
+        console.log(nextUrl);
         $.ajax({
-            url: "https://spicedify.herokuapp.com/spotify",
+            url: nextUrl,
             method: "GET",
+            success: function (data) {
+                console.log("nextUrl:", nextUrl);
+                data = data.albums || data.artists;
+                var html2 = "";
+                for (var i = 0; i < data.items.length; i++) {
+                    var img = "./default.jpeg";
+                    if (data.items[i].images[0]) {
+                        img = data.items[i].images[0].url;
+                    }
+                    html2 += "<div>" + data.items[i].name + "</div>";
+                }
+                console.log(html2);
+                $("#results-container").append(html2);
+            },
         });
     });
 })(); //closes iife
 
-// // $("#more").on("click", function () {
-//     var userInput = $("input[name=user-input]").val();
-//     console.log("userInput", userInput);
-//     var albumOrArtist = $("select").val();
-//     $.ajax({
-//         url: "https://spicedify.herokuapp.com/spotify",
-//         method: "GET",
-//         success: function (responseData) {
-//             responseData = responseData.artists || responseData.albums;
-//             var myHtml = "";
-//             for (var i = 0; i < responseData.items.length; i++) {
-//                 myHtml += "<div>" + "<a>"+ responseData.items[i].link + "</a>" + "</div>";
+// function checkScrollPos() {
+//     setTimeout(function () {
+//         if (userHasReachedNearBottomOfPage) {
+//             // maybe the user is like 500px away from the bottom
+//             // if so, trigger 2nd ajax request (get next set of results)
+//         } else {
+//             // call this funciton again to check the scroll position (whether they're near the bottom)
 //         }
-//     });
+//     }, 500);
+// }
+
+// place this querystring check in your ajax success function
+// if (yourQueryStringIsInUrl) {
+//     // call function to check whether the user is near the bottom of the page
+// }
+
+// window.addEventListener("scroll", function () {
+//     console.log("scroll is firing");
+//     if ($(document).scrollTop() < $(document).height) {
+//         $("#results-container").append(html);
+//     } else {
+//         nextUrl;
+//     }
+// });
+
+// $(window).scroll(function(){
+//     if((window).scroll > )
+// })
