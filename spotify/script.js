@@ -80,10 +80,16 @@
                     html2 += "<div>" + data.items[i].name + "</div>";
                 }
                 console.log(html2);
-                $("#results-container").append(html2);
+                $(".results-container").append(html2);
             },
         });
     });
+    if (location.search.indexOf("scroll=infinite") === 1) {
+        infiniteScroll = true;
+        window.addEventListener("scroll", function () {
+            console.log("scroll is firing");
+            $(document).scrollTop() < $(document).height;
+        });
 })(); //closes iife
 
 // function checkScrollPos() {
@@ -101,15 +107,6 @@
 // if (yourQueryStringIsInUrl) {
 //     // call function to check whether the user is near the bottom of the page
 // }
-
-// window.addEventListener("scroll", function () {
-//     console.log("scroll is firing");
-//     if ($(document).scrollTop() < $(document).height) {
-//         $("#results-container").append(html);
-//     } else {
-//         nextUrl;
-//     }
-// });
 
 // $(window).scroll(function(){
 //     if((window).scroll > )
