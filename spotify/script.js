@@ -86,28 +86,14 @@
     });
     if (location.search.indexOf("scroll=infinite") === 1) {
         infiniteScroll = true;
-        window.addEventListener("scroll", function () {
-            console.log("scroll is firing");
-            $(document).scrollTop() < $(document).height;
-        });
+        function checkScrollPos() {
+            setTimeout(function () {
+                if (
+                    $(window).scrollTop() ==
+                    $(document).height() - $(window).height()
+                );
+            }, 500);
+        }
+        checkScrollPos();
+    }
 })(); //closes iife
-
-// function checkScrollPos() {
-//     setTimeout(function () {
-//         if (userHasReachedNearBottomOfPage) {
-//             // maybe the user is like 500px away from the bottom
-//             // if so, trigger 2nd ajax request (get next set of results)
-//         } else {
-//             // call this funciton again to check the scroll position (whether they're near the bottom)
-//         }
-//     }, 500);
-// }
-
-// place this querystring check in your ajax success function
-// if (yourQueryStringIsInUrl) {
-//     // call function to check whether the user is near the bottom of the page
-// }
-
-// $(window).scroll(function(){
-//     if((window).scroll > )
-// })
