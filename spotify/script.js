@@ -64,12 +64,12 @@
 
     // button More
     $("#more").on("click", function () {
-        console.log(nextUrl);
+        // console.log(nextUrl);
         $.ajax({
             url: nextUrl,
             method: "GET",
             success: function (data) {
-                console.log("nextUrl:", nextUrl);
+                // console.log("nextUrl:", nextUrl);
                 data = data.albums || data.artists;
                 var html2 = "";
                 for (var i = 0; i < data.items.length; i++) {
@@ -79,7 +79,7 @@
                     }
                     html2 += "<div>" + data.items[i].name + "</div>";
                 }
-                console.log(html2);
+                // console.log(html2);
                 $(".results-container").append(html2);
             },
         });
@@ -91,9 +91,32 @@
                 if (
                     $(window).scrollTop() ==
                     $(document).height() - $(window).height()
-                );
+                ) {
+                    function sendAgain() {
+                        $.ajax({
+                            url: nextUrl,
+                            method: "GET",
+                            success: function (data) {
+                                // console.log("nextUrl:", nextUrl);
+                                data = data.albums || data.artists;
+                                var html2 = "";
+                                for (var i = 0; i < data.items.length; i++) {
+                                    var img = "./default.jpeg";
+                                    if (data.items[i].images[0]) {
+                                        img = data.items[i].images[0].url;
+                                    }
+                                    html2 +=
+                                        "<div>" + data.items[i].name + "</div>";
+                                }
+                                // console.log(html2);
+                                $(".results-container").append(html2);
+                            },
+                        });
+                    }
+                } else {
+                    checkScrollPos();
+                }
             }, 500);
         }
-        checkScrollPos();
     }
 })(); //closes iife
