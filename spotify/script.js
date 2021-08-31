@@ -23,25 +23,32 @@
                     //     "should there be a image?",
                     //     responseData.items[i].images
                     // );
-                    console.log(
-                        "find link",
-                        responseData.items[i].external_urls.spotify
-                    );
+                    // console.log(
+                    //     "find link",
+                    //     responseData.items[i].external_urls.spotify
+                    // );
                     var link = responseData.items[i].external_urls.spotify;
                     if (responseData.items[i].images.length > 0) {
-                        console.log("yes we got an image to set!");
+                        // console.log("yes we got an image to set!");
                         imgUrl = responseData.items[i].images[0].url;
                     }
                     myHtml +=
                         "<div> <a href='" +
                         link +
-                        "'><img src='" +
+                        "'><img class='imgA' src='" +
                         imgUrl +
                         "'>" +
                         responseData.items[i].name +
                         "</a></div>";
                     // <a href="someLinkWeGotFromTheApi"><img src="theSrcToTheImage" alt=""><p>TheNameWeGotFromTheApi</p></a>
-                    console.log(imgUrl);
+                    // console.log(imgUrl);
+                }
+                var noResults = "";
+                responseData.items[i];
+                if (responseData.items[i] != 0) {
+                    noResults = responseData.items[i];
+                    alert("Try again!");
+                    // console.log("we have no results", noResults);
                 }
                 var nextUrl =
                     responseData.next &&
@@ -49,10 +56,25 @@
                         "api.spotify.com/v1/search",
                         "spicedify.herokuapp.com/spotify"
                     );
+
                 $(".results-container").html(myHtml);
             },
         });
     }); //closes click handler for search
+
+    // button More
+    $("#more").on("click", function () {
+        console.log(
+            "user clicked more button wants to make reuqest for whatever they input and slected"
+        );
+        var userInput = $("input[name=userinput]").val();
+        console.log("userInput", userInput);
+        // var AlbumOrArtist = $("select").val();
+        $.ajax({
+            url: "https://spicedify.herokuapp.com/spotify",
+            method: "GET",
+        });
+    });
 })(); //closes iife
 
 // // $("#more").on("click", function () {

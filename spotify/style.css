@@ -1,5 +1,32 @@
 * {
     box-sizing: border-box;
-    margin: 10px;
-    background-color: rgb(65, 175, 160);
+    margin: 20px;
+    background-color: #2940ab;
+    color: #1bd760;
+}
+
+a {
+    text-decoration: none;
+}
+
+.imgA {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    color: brown;
+}
+
+button {
+    background-color: #2940ab;
+    color: #1bd760;
+    border: solid 2px #1bd760;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+select {
+    background-color: #2940ab;
+    color: #1bd760;
+    border: solid 2px #1bd760;
+    border-radius: 20px;
+    padding: 5px 15px;
 }
