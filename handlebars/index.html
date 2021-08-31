@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>handlebars</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>🎵 Templating Rocks  🎶</h1>
+    <div class="mustard-info">
+        <!-- put the handlebars template -->
+    </div>
+    <script id="mustard" type="text/x-handlebars-template">
+    <!-- store  -->
+        <div class="card">
+            <h2>Hello, {{name}}!</h2>
+            <h3>Nickname: {{nickname}}</h3>
+            <h3>favorite Food:</h3>
+            <ul>
+                {{#favouriteFood}} 
+                <li>{{this}}</li> 
+                {{/favouriteFood}}
+            </ul>
+            <h3>skills:</h3>
+            <ol>
+                {{#each skills}}
+                <li>{{@key}}{{this}}</li>
+                 {{/each}}
+            </ol>
+            <p>SINGLE ARRAY ITEM: {{favoriteFood.[0]}}</p>
+        </div>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
