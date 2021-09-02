@@ -31,11 +31,11 @@ const story = {
 function askQuestion(obj) {
     rl.question(chalk.cyan(obj.q), (answer) => {
         if (typeof obj.answers[answer] === "object") {
-            askQuestion(obj);
+            askQuestion(obj.answers[answer]);
         } else if (typeof obj.answers[answer] === "string") {
-            askQuestion(obj);
+            askQuestion(obj.answers[answer]);
             // askQuestion(obj);
-            rl.close();
+            // rl.close();
         } else {
             console.log(chalk.red("You're should try, it’s a classic!"));
             askQuestion(obj);
