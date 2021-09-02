@@ -18,7 +18,7 @@ const story = {
                 Hitchcock: {
                     q: "Yes, you're right! and do you know the movie James Bond was inpired by this movies?",
                     answer: {
-                        no: "Yes, amazing!",
+                        no: "Yes, isn't amazing?",
                     },
                 },
                 Tarantino: "Nope! It’s from Hitchcock",
@@ -30,20 +30,15 @@ const story = {
 
 function askQuestion(obj) {
     rl.question(chalk.cyan(obj.q), (answer) => {
-        //question
-        if (obj.answers[answer]) {
-            // console.log(chalk.green(" Too bad! :("));
+        if (typeof obj.answers[answer] === "object") {
+            askQuestion(obj);
+        } else if (typeof obj.answers[answer] === "string") {
+            askQuestion(obj);
+            // askQuestion(obj);
             rl.close();
-        } else if (obj.answers[answer]) {
-            // console.log(
-            //     chalk.red("that's not the right answer... try again!!")
-            // );
-            askQuestion(story);
         } else {
-            // console.log(
-            //     chalk.red("that's not the right answer... try again!!")
-            // );
-            askQuestion(story);
+            console.log(chalk.red("You're should try, it’s a classic!"));
+            askQuestion(obj);
         }
     });
 }
