@@ -1,11 +1,11 @@
 (function () {
     var nextUrl;
     $("#submit-btn").on("click", function () {
-        console.log(
-            "user clicked submit button wants to make reuqest for whatever they input and slected"
-        );
+        // console.log(
+        //     "user clicked submit button wants to make reuqest for whatever they input and slected"
+        // );
         var userInput = $("input[name=user-input]").val();
-        console.log("userInput", userInput);
+        // console.log("userInput", userInput);
         var albumOrArtist = $("select").val(); // .val() = used to get the values of form elements such as input, select and textarea
         $.ajax({
             url: "https://spicedify.herokuapp.com/spotify",
@@ -44,13 +44,6 @@
                     // <a href="someLinkWeGotFromTheApi"><img src="theSrcToTheImage" alt=""><p>TheNameWeGotFromTheApi</p></a>
                     // console.log(imgUrl);
                 }
-                // var noResults = "";
-                // responseData.items[i];
-                // if (responseData.items[i] != 0) {
-                //     noResults = responseData.items[i];
-                //     alert("Try again!");
-                //     // console.log("we have no results", noResults);
-                // }
                 nextUrl =
                     responseData.next &&
                     responseData.next.replace(
@@ -77,15 +70,17 @@
                     if (data.items[i].images[0]) {
                         img = data.items[i].images[0].url;
                     }
-                    html2 += "<div>" + data.items[i].name + "</div>";
+                    html2 += "<div>" + data.items[i].name + "</a></div>";
                 }
                 // console.log(html2);
                 $(".results-container").append(html2);
             },
         });
     });
-    if (location.search.indexOf("scroll=infinite") === 1) {
-        infiniteScroll = true;
+
+    if (location.search.indexOf("scroll=infinite") != -1) {
+        // infiniteScroll = true;
+        checkScrollPos();
         function checkScrollPos() {
             setTimeout(function () {
                 if (
@@ -113,10 +108,19 @@
                             },
                         });
                     }
-                } else {
-                    checkScrollPos();
                 }
-            }, 500);
+                // checkScrollPos();
+            }, 1000);
         }
     }
+
+    // if (location.search.indexOf("scroll=infinite") === 1) {
+    //     infiniteScroll = true;
+    //     function checkScrollPos() {
+    //         $("#more").addClass(".hidden");
+    //         $(".results-container").html(nextUrl);
+    //     }
+    // }
 })(); //closes iife
+
+// console.log($(document).height() - $(window).height());
