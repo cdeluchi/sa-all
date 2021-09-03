@@ -14,10 +14,10 @@ const story = {
     answers: {
         yes: {
             q: "Great, let’s play! The movie, North by Northwest, is from which director?  Tarantino or Hitchcock? ",
-            answer: {
+            answers: {
                 Hitchcock: {
                     q: "Yes, you're right! and do you know the movie James Bond was inpired by this movies?",
-                    answer: {
+                    answers: {
                         no: "Yes, isn't amazing?",
                     },
                 },
@@ -32,12 +32,14 @@ function askQuestion(obj) {
     rl.question(chalk.cyan(obj.q), (answer) => {
         if (typeof obj.answers[answer] === "object") {
             askQuestion(obj.answers[answer]);
-        } else if (typeof obj.answers[answer] === "string") {
-            askQuestion(obj.answers[answer]);
+        } else if (typeof obj.answers[answer] == "string") {
+            console.log(obj.answers[answer]);
+            // console.log(obj.answers[answer]);
+            // askQuestion(obj.answers[answer]);
             // askQuestion(obj);
-            // rl.close();
+            rl.close();
         } else {
-            console.log(chalk.red("You're should try, it’s a classic!"));
+            // console.log(chalk.red("You're should try, it’s a classic!"));
             askQuestion(obj);
         }
     });
