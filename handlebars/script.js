@@ -1,4 +1,5 @@
 (function () {
+    /////////////////////// ⬇️ DO NOT TOUCH ⬇️  //////////////////////
     Handlebars.templates = Handlebars.templates || {};
 
     var templates = document.querySelectorAll(
@@ -8,9 +9,9 @@
     Array.prototype.slice.call(templates).forEach(function (script) {
         Handlebars.templates[script.id] = Handlebars.compile(script.innerHTML);
     });
-    // //////////////// do not touch 🥊 this code above ⬆️///////////////
+    /////////////////////// ⬆️ DO NOT TOUCH ⬆️ //////////////////////
 
-    var books3 = {
+    var books = {
         authors: [
             {
                 name: "Kahlil Gibran",
@@ -51,5 +52,5 @@
         ],
     };
 
-    $(".mustard-info").html(Handlebars.templates.mustard(books3));
+    $(".books-list").html(Handlebars.templates.list(books));
 })();

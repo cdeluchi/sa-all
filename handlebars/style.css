@@ -29,3 +29,15 @@ body div {
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+img {
+    height: 300px;
+    width: 25vw;
+    object-fit: scale-down;
+}
+
+.text-photo {
+    font-size: 10px;
+    text-align: center;
+    padding: 0;
+}
