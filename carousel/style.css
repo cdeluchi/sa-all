@@ -5,50 +5,85 @@ body {
     margin: 0;
 }
 
-.container {
-    position: relative;
+#carousel {
     height: 600px;
+    width: 100%;
+    position: relative;
     overflow: hidden;
 }
 
-#carousel img {
+.kitty {
     position: absolute;
-    height: 100%;
+    left: 0;
+    top: 0;
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition-property: transform;
     transform: translateX(100%);
 }
 
-#carousel img.seethecat {
-    transform: translateX(0);
-    transition-property: transform;
-    transition-duration: 5s;
+.kitty:nth-child(1) {
+    background-image: url(./asset/cat1.jpg);
+    left: 0;
 }
-#carousel img.dontseethecat {
-    transition: translateX(-100%);
-    transition-property: transform;
+
+.kitty:nth-child(2) {
+    background-image: url(./asset/cat2.jpg);
+}
+
+.kitty:nth-child(3) {
+    background-image: url(./asset/cat3.jpg);
+}
+
+.kitty:nth-child(4) {
+    background-image: url(./asset/cat4.jpg);
+}
+
+.kitty.exit-stage-left {
+    transform: translateX(-100%);
     transition-duration: 1s;
 }
-#smalldots {
+
+.kitty.onscreen {
+    transform: translateX(0);
+    transition-duration: 1s;
+}
+
+#dots {
     position: absolute;
-    top: 500px;
-    display: flex;
+    z-index: 10;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    justify-content: center;
+    height: 55px;
+    padding: 20px;
+    text-align: center;
 }
 
 .dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: cornflowerblue solid 2px;
-    margin: 10px;
-    background-color: blue;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    border: 2px #fff solid;
+    margin: 0 5px;
 }
 
-.dot.on {
-    background-color: darkslateblue;
+.dot.current {
+    background-color: #fff;
 }
-.dot:hover {
-    cursor: pointer;
+
+@media (max-width: 414px) {
+    #carousel {
+        height: 100vh;
+    }
+}
+
+@media (max-height: 736px) and (orientation: landscape) {
+    #carousel {
+        height: 100vh;
+    }
 }
