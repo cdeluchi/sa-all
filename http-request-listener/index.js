@@ -75,19 +75,20 @@ server.listen(8080, () => console.log("server is listening...."));
 // arg2 - callback fun that will output a string! (our sanity check)
 
 // ****PART II****
-// const date = new Date();
-// const server = http.createServer((request, response) => {
-//     request.on("error", (err) => console.log("err in request: ", err));
-//     response.on("error", (err) => console.log("err in response: ", err));
+const date = new Date();
+const dateTime= "";
+const server = http.createServer((request, response) => {
+    request.on("error", (err) => console.log("err in request: ", err));
+    response.on("error", (err) => console.log("err in response: ", err));
 
-//     console.log("request method: ", request.method);
-//     console.log("request url: ", request.url);
-//     console.log("request headers: ", request.headers);
-//     }
+    console.log("request method: ", request.method);
+    console.log("request url: ", request.url);
+    console.log("request headers: ", request.headers);
+    }
 
-//     appendFile('message.txt', 'data to append', (err) => {
-//         if (err) throw err;
-//         console.log('The "data to append" was appended to file!');
-//             });
+    appendFile('text', 'dataTime', (err) => {
+        if (err) throw err;
+        console.log('err', err);
+            });
 
-//         server.listen(8080, () => console.log("server is listening...."));
+        server.listen(8080, () => console.log("server is listening...."));
