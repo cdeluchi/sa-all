@@ -20,14 +20,18 @@ const server = http.createServer((request, response) => {
     let log =
         new Date().toString() +
         "\t" +
-        request.method +
+        request.method + //if (request.method === "GET") {
         "\t" +
-        request.url +
+        request.url + // if (request.url === "/secret-page") {
         "\t" +
         // A user agent is a computer program representing a person, for example, a browser in a Web context.
         // A request header is an HTTP header that can be used in an HTTP request to provide information about the request context, so that the server can tailor the response.
         request.headers["user-agent"] +
         "\n";
+    fs.appendFile("requests.txt", log, (err) => {
+        if (err) throw err;
+        console.log("appendFile");
+    });
 
     if (request.method === "GET") {
         if (request.url === "/secret-page") {
