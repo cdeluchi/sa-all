@@ -29,11 +29,6 @@ const server = http.createServer((request, response) => {
         request.headers["user-agent"] +
         "\n";
 
-    fs.appendFile("requests.txt", log, (err) => {
-        if (err) throw err;
-        console.log("appendFile");
-    });
-
     if (request.method === "GET") {
         if (request.url === "/secret-page") {
             // we want to redirect them away! it's a secret page

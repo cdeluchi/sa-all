@@ -1,0 +1,2 @@
+Mon Sep 06 2021 21:13:57 GMT+0200 (Central European Summer Time)	GET	/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36
+Mon Sep 06 2021 21:13:57 GMT+0200 (Central European Summer Time)	GET	/favicon.ico	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36
