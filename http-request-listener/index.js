@@ -17,6 +17,23 @@ const server = http.createServer((request, response) => {
     console.log("request url: ", request.url);
     console.log("request headers: ", request.headers);
 
+    let log =
+        new Date().toString() +
+        "\t" +
+        request.method +
+        "\t" +
+        request.url +
+        "\t" +
+        // A user agent is a computer program representing a person, for example, a browser in a Web context.
+        // A request header is an HTTP header that can be used in an HTTP request to provide information about the request context, so that the server can tailor the response.
+        request.headers["user-agent"] +
+        "\n";
+
+    fs.appendFile("requests.txt", log, (err) => {
+        if (err) throw err;
+        console.log("appendFile");
+    });
+
     if (request.method === "GET") {
         if (request.url === "/secret-page") {
             // we want to redirect them away! it's a secret page
@@ -66,16 +83,7 @@ const server = http.createServer((request, response) => {
     ) {
         response.statusCode = 405;
         response.end();
-    }else if(request.method === "GET"){
-        fs.appendFile("text", "dataTime", (err) => {
-            (request.url === "/secret-page") {
-           response.statusCode = 302;
-           response.setHeader("Location", "/");
-           response.end();
-        }
-        });
-}
-
+    }
 });
 server.listen(8080, () => console.log("server is listening...."));
 
