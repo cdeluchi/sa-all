@@ -1,7 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-
 const contentType = {
     ".css": "text/css",
     ".html": "text/html",
@@ -12,6 +11,7 @@ const contentType = {
     ".png": "image/png",
     ".svg": "image/svg+xml",
 };
+const generateOverview = require("./generateOverview");
 
 http.createServer((req, res) => {
     req.on("error", (err) => console.log("err in req:", err));
@@ -23,8 +23,14 @@ http.createServer((req, res) => {
         return res.end();
     }
     console.log(req.url);
-    const myPath = `${__dirname}/projects${req.url}`;
+    if (req.url === "/") {
+        const homePage = generateOverview.projectOverviewHtml();
+        console.log(homePage);
+        res.end(homePage);
+        return;
+    }
 
+    const myPath = `${__dirname}/projects${req.url}`;
     console.log("myPath:", myPath);
     if (!myPath.startsWith(__dirname + "/projects")) {
         console.log(
