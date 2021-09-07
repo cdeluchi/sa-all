@@ -42,10 +42,8 @@ http.createServer((req, res) => {
     }
     // path to the project the user requested ✅
     console.log(req.url);
-    // const projects = `projects/carousel/index.html`;
-    const myPath = path.normalize(
-        `${__dirname}/projects/carousel/${contentType}`
-    );
+    const myPath = path.normalize(`${__dirname}/projects${req.url}`);
+
     console.log("myPath:", myPath);
     if (!myPath.startsWith(__dirname + "/projects")) {
         console.log(
@@ -111,10 +109,14 @@ http.createServer((req, res) => {
             res.setHeader("content-type", contentType[path.extname(myPath)]);
             res.statusCode = 200;
             readStreamHtml.pipe(res);
-            console.log(
-                "file extension of requested file:",
-                path.extname(myPath)
-            );
+            readStreamHtml.on("error", (err) => {
+                res.statusCode = 500;
+                return res.end();
+            });
+            // console.log(
+            //     "file extension of requested file:",
+            //     path.extname(myPath)
+            // );
             // set the correct header:
             // i.e. for .css we would want to res.setHeader("Content-Type", "text/css");
             // #3 pipe our datachunks from the readstream above and pass it the response
