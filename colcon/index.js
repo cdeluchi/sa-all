@@ -33,16 +33,18 @@ const server = http.createServer((req, res) => {
         res.end();
     } else if (req.method === "POST") {
         let body = "";
-
         req.on("data", (chunk) => (body += chunk));
         req.on("end", () => {
             const parsedBody = querystring.parse(body);
-            console.log("parsed body:", parsedBody);
+            const { text, color } = parsedBody;
+            console.log(chalk[`${color}`](parsedBody.first));
             res.setHeader("Content-Type", "text/html");
             res.statusCode = 200;
             res.end(`
                     <title>${parsedBody.text}</title>
-                    <a href="/"><p style="color:${parsedBody.color}">Hello ${parsedBody.text}</p></a>
+                    <a href= style= "text-decoration: none" "/">
+                    <p style="color:${parsedBody.color}">
+                    Hello ${parsedBody.first}</p></a>
                     `);
         });
     }
