@@ -11,7 +11,7 @@ const path = require("path");
 // console.log("projectOverviewHtml:", projectOverviewHtml);
 
 // approach to keeping track of our potential headers to set:✅
-// properties of the extensions and values for which header should be set
+// properties of the extensions and values for which header should be set ✅
 const contentType = {
     ".css": "text/css",
     ".html": "text/html",
@@ -42,7 +42,7 @@ http.createServer((req, res) => {
     }
     // path to the project the user requested ✅
     console.log(req.url);
-    const myPath = path.normalize(`${__dirname}/projects${req.url}`);
+    const myPath = `${__dirname}/projects${req.url}`;
 
     console.log("myPath:", myPath);
     if (!myPath.startsWith(__dirname + "/projects")) {
@@ -52,7 +52,7 @@ http.createServer((req, res) => {
         res.statusCode = 403; // forbidden;
         return res.end();
     }
-
+    let readStreamHtml;
     // if a request makes it to here, that means this is a legit request :D
     fs.stat(myPath, (err, stats) => {
         if (err) {
@@ -67,27 +67,31 @@ http.createServer((req, res) => {
                 console.log(
                     "user wants a directory, that means we should serve the index.html"
                 );
+
                 // #1 create readstream to index.html of project requested ✅
-                const readStreamHtml = fs.createReadStream(
-                    myPath + "index.html"
-                );
+                readStreamHtml = fs.createReadStream(myPath + "index.html");
                 // #2 set the correct headers for what I want to send ✅
-                res.setHeader("Location", "/");
+                // res.setHeader("Location", "/");
 
                 //# 3 send over our actual data chunks from the readstream above ✅
                 // readStreamHtml.pipe(res);
-                if (res.pipe(readStreamHtml) === true) {
-                    return readStreamHtml;
-                } else {
-                    res.statusCode = 404; // not found
-                }
+                // if (res.pipe(readStreamHtml) === true) {
+                //     return readStreamHtml;
+                // } else {
+                //     res.statusCode = 404; // not found
+                // }
 
                 // #4 need to do some error handling for the readstream ✅
                 readStreamHtml.on("error", (err) => {
                     console.log("err on readstream:", err);
                     res.statusCode = 500; // internal server error;
+
                     return res.end();
                 });
+            } else {
+                res.setHeader("Location", req.url + "/");
+                res.statusCode = 302;
+                return res.end();
             }
             // if (request.url === "/") {
             //     response.statusCode = 302;
@@ -104,11 +108,10 @@ http.createServer((req, res) => {
             // #1 create a readstream
             // #2 set the correct headers
             // figure out what header we should set based on the file extension✅
-            const readStreamHtml = fs.createReadStream(myPath);
+            readStreamHtml = fs.createReadStream(myPath);
             // const contType = contentType;
             res.setHeader("content-type", contentType[path.extname(myPath)]);
             res.statusCode = 200;
-            readStreamHtml.pipe(res);
             readStreamHtml.on("error", (err) => {
                 res.statusCode = 500;
                 return res.end();
@@ -122,5 +125,6 @@ http.createServer((req, res) => {
             // #3 pipe our datachunks from the readstream above and pass it the response
             // #4 handle any potential errors on the readstream
         }
+        readStreamHtml.pipe(res);
     });
 }).listen(8080, () => console.log("keep calm you got this!✨"));
