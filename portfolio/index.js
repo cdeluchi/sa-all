@@ -7,7 +7,7 @@ const contentType = {
     ".js": "text/javascript",
     ".json": "application/json",
     ".gif": "image/gif",
-    ".jpg": "image/jpeg",
+    ".jpg": "image/jpg",
     ".png": "image/png",
     ".svg": "image/svg+xml",
 };
