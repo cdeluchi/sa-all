@@ -2,8 +2,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const generateOverview = require("./generateOverview");
-const os = require("os");
-const cluster = require("cluster");
+// const os = require("os");
+// const cluster = require("cluster");
 const contentType = {
     ".css": "text/css",
     ".html": "text/html",
@@ -14,8 +14,7 @@ const contentType = {
     ".png": "image/png",
     ".svg": "image/svg+xml",
 };
-
-console.log(`worker with pid => ${cluster.worker.process.pid} is running`);
+// console.log(`worker with pid => ${cluster.worker.process.pid} is running`);
 
 http.createServer((req, res) => {
     req.on("error", (err) => console.log("err in req:", err));
@@ -29,7 +28,7 @@ http.createServer((req, res) => {
     console.log(req.url);
     if (req.url === "/") {
         const homePage = generateOverview.projectOverviewHtml();
-        console.log(homePage);
+        // console.log(homePage);
         res.end(homePage);
         return;
     }
@@ -53,9 +52,9 @@ http.createServer((req, res) => {
         }
         if (stats.isDirectory()) {
             if (req.url.endsWith("/")) {
-                console.log(
-                    "user wants a directory, that means we should serve the index.html"
-                );
+                // console.log(
+                //     "user wants a directory, that means we should serve the index.html"
+                // );
 
                 readStreamHtml = fs.createReadStream(myPath + "index.html");
                 readStreamHtml.on("error", (err) => {
