@@ -1,6 +1,9 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const generateOverview = require("./generateOverview");
+const os = require("os");
+const cluster = require("cluster");
 const contentType = {
     ".css": "text/css",
     ".html": "text/html",
@@ -11,7 +14,8 @@ const contentType = {
     ".png": "image/png",
     ".svg": "image/svg+xml",
 };
-const generateOverview = require("./generateOverview");
+
+console.log(`worker with pid => ${cluster.worker.process.pid} is running`);
 
 http.createServer((req, res) => {
     req.on("error", (err) => console.log("err in req:", err));
