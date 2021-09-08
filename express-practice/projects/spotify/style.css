@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 20px;
+    background-color: #2940ab;
+    color: #1bd760;
+}
+input {
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #1bd760;
+}
+
+a {
+    text-decoration: none;
+}
+
+.imgA {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    color: brown;
+}
+
+button {
+    background-color: #2940ab;
+    color: #1bd760;
+    border: solid 2px #1bd760;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+select {
+    background-color: #2940ab;
+    color: #1bd760;
+    border: solid 2px #1bd760;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+.hidden {
+    visibility: hidden;
+}
