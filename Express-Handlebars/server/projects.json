@@ -1,13 +1,13 @@
 [
     {
-        "title": "Carousel",
-        "directory": "carousel",
-        "link": "http://localhost:8080/carousel/"
-    },
-    {
         "title": "Connect Four",
         "directory": "connect-four",
         "link": "http://localhost:8080/connect-four/"
+    },
+    {
+        "title": "Carousel",
+        "directory": "carousel",
+        "link": "http://localhost:8080/carousel/"
     },
     {
         "title": "Spotify",

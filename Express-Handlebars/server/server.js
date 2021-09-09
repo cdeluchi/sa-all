@@ -16,7 +16,6 @@ app.use(express.static("./project"));
 
 app.get("/", (req, res) => {
     res.render("home", {
-        layout: "main",
         name: "project",
         message: "Welcome!",
         projects,
