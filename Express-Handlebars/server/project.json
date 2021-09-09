@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Carousel",
+        "directory": "carousel"
+    },
+    {
+        "title": "Connect Four",
+        "directory": "connect_four"
+    },
+    {
+        "title": "Spotify",
+        "directory": "spotify"
+    }
+]
