@@ -1,11 +1,11 @@
 <h1>Projects Spiced Academy</h1>
 <section id="projects">
-    {{#pokemons}}
+    {{#projects}}
         <div class="projects">
-            <h2>{{name}}</h2>
-            <img src="{{image}}" />
-
+            <a href="{{link}}">
+                <h2>{{title}}</h2>
+                <img src="{{directory}}/screenshot.jpg" />
+            </a>
         </div>
-    {{/pokemons}}
-
+    {{/projects}}
 </section>
