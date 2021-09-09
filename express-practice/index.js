@@ -1,7 +1,26 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const basicAuth = require("basic-auth");
 
+//***basicAuth ***/
+const myAuth = function (req, res, next) {
+    const credentials = basicAuth(req);
+    if (
+        !credentials ||
+        credentials.name != "myproject" ||
+        credentials.pass != "mypassword1"
+    ) {
+        res.setHeader(
+            "WWW-Authenticate",
+            'Basic realm="You need to say who you are!"'
+        );
+        res.sendStatus(401);
+    } else {
+        next();
+    }
+};
+app.use("/carousel", myAuth);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static("./projects"));
@@ -12,7 +31,6 @@ app.use((req, res, next) => {
     } else {
         next();
     }
-    // console.log(`A ${req.method} request was made to the ${req.url} route`);
 });
 app.get("/", (req, res) => {
     res.send("<h1>This is home! 🙌</h1>");
@@ -31,9 +49,6 @@ app.post("/cookie", (req, res) => {
         res.redirect(req.cookies.requrl);
     } else {
         res.send("<h2>It's better if you accept the cookies 🥊</h2>");
-        // console.log("res", res);
     }
 });
-// res.send(generateOverview + "/project");
-
 app.listen(8080, () => console.log("The server is waiting"));
