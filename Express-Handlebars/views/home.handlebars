@@ -1,14 +1,2 @@
-<h1>Projects Spiced Academy</h1>
-<h2>The most incredeable projects in the world</h2>
 
-<section id="projects">
-    {{#projects}}
-        <div class="projects">
-            <a href="{{link}}">
-                <h2>{{title}}</h2>
-                <img src="{{directory}}/screenshot.jpg" />
-            </a>
-        </div>
-    {{/projects}}
-</section>
-<footer>Copyright @2021 | Designed With by cdeluchi</footer>
+{{>list screenshot=true}}

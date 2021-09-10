@@ -1,11 +1,23 @@
 * {
     box-sizing: border-box;
-    background-color: #fdded0;
     font-family: sans-serif;
     margin: 15px;
 }
 body {
+    margin: 15px;
+
     border: 1px solid violet;
+    background: #ddd6f3; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to top,
+        #faaca8,
+        #ddd6f3
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to top,
+        #faaca8,
+        #ddd6f3
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 h1 {
     text-align: center;
@@ -15,7 +27,7 @@ h2 {
     text-align: center;
     color: #290fba;
 }
-#projects {
+#projects-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,9 +37,9 @@ img {
     border: 3px solid #8236cb;
     border-radius: 5px;
 }
+
 a {
     text-decoration: none;
-    text-align: center;
     font-size: 8px;
 }
 footer {

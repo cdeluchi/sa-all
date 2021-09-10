@@ -4,6 +4,17 @@
     background-color: #2940ab;
     color: #1bd760;
 }
+body {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 150px 200px;
+}
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 15px;
+}
 input {
     padding: 5px;
     border-top: none;

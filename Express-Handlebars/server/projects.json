@@ -2,16 +2,19 @@
     {
         "title": "Connect Four",
         "directory": "connect-four",
-        "link": "http://localhost:8080/connect-four/"
+        "link": "http://localhost:8080/connect-four/",
+        "text": "qualquer mensagem!"
     },
     {
         "title": "Carousel",
         "directory": "carousel",
-        "link": "http://localhost:8080/carousel/"
+        "link": "http://localhost:8080/carousel/",
+        "text": "qualquer mensagem!"
     },
     {
         "title": "Spotify",
         "directory": "spotify",
-        "link": "http://localhost:8080/spotify/"
+        "link": "http://localhost:8080/spotify/",
+        "text": "qualquer mensagem!"
     }
 ]
