@@ -1,11 +1,9 @@
 * {
     box-sizing: border-box;
     font-family: sans-serif;
-    margin: 15px;
+    margin: 10px;
 }
 body {
-    margin: 15px;
-
     border: 1px solid violet;
     background: #ddd6f3; /* fallback for old browsers */
     background: -webkit-linear-gradient(
@@ -27,15 +25,16 @@ h2 {
     text-align: center;
     color: #290fba;
 }
+li {
+    list-style-type: none;
+}
 #projects-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 img {
-    max-width: 100%;
-    border: 3px solid #8236cb;
-    border-radius: 5px;
+    width: 300px;
 }
 
 a {
@@ -47,4 +46,20 @@ footer {
     font-size: 10px;
     text-align: center;
     border: 1px solid violet;
+}
+.aDescrip {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.descriptiondiv {
+    background-color: burlywood;
+}
+.ImgDescrip {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    max-width: 100%;
+    border: 3px solid #8236cb;
+    border-radius: 5px;
 }

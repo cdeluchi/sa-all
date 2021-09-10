@@ -23,7 +23,6 @@ app.get("/", (req, res) => {
 app.get("/projects/:project", (req, res) => {
     console.log(req.params.project);
     const projToFind = req.params.project;
-
     const selectedProj = projects.find((proj) => proj.directory === projToFind);
     console.log("Project found", selectedProj);
     if (!selectedProj) {

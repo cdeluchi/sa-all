@@ -1,15 +1,15 @@
-<h1> list of the projects</h1>
+<h1> 🦩 my beautiful projects 🦩</h1>
 <section id="projects-list">
     {{#projects}}
         <div class="list">
             <li>
                 <a href="/projects/{{directory}}">
                 <h2>{{title}}</h2>
-            </a>
-            </li>
             {{#if ../screenshot}}
                 <img class="ImgDescrip" src="/{{directory}}/screenshot.jpg" />
             {{/if}}
+            </a>
+            </li>
             
         </div>
     {{/projects}}
