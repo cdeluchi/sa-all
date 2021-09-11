@@ -1,9 +1,8 @@
-<h1>This is my list of projects</h1>
-<h2>{{selectedProj.title}}</h2>
 <section class="descriptiondiv">
-
-<a class="aDescrip" href="{{selectedProj.link}}">{{selectedProj.screenshot}}{{selectedProj.title}}</a>
-<img class="ImgDescrip" src="/{{selectedProj.directory}}/screenshot.jpg" />
+<h1 class="h1desc">This is my list of projects</h1>
+<h2>{{selectedProj.title}}</h2>
+<a class="aDescrip" href="{{selectedProj.link}}">{{selectedProj.title}} </a>
+<a class="ImgDescrip" href="{{selectedProj.link}}"> <img  src="/{{selectedProj.directory}}/screenshot.jpg" /></a>
 {{>list }}
 </section>
 

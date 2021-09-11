@@ -40,26 +40,4 @@ app.get("/projects/:project", (req, res) => {
     }
 });
 
-app.get("/projects/:muffin", (req, res) => {
-    // res.send(req.params);
-    console.log("****", req.params);
-    res.send("server handle this request");
-    // const arrProjects = req(params.projects);
-    // const projToFind = arrProjects;
-    // const selectedProj = arrProjects.find(
-    //     (proj) => proj.directory === projToFind
-    // );
-    // if (!selectedProj) {
-    //     return res.send.status(404);
-    // } else {
-    //     res.render("description", {
-    //         projects,
-    //         layout: "main",
-    //         title: "My Projects",
-    //         text: "Something about this project",
-    //         footer: "Designed by cdeluchi",
-    //     });
-    //     console.log(res.send.status(404));
-    // }
-});
 app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
