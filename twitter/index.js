@@ -19,6 +19,8 @@ app.get("/data-server.json", (req, res) => {
                 return;
             }
             // console.log("tweets in index.js! ", tweets);
+            // aqui é onde todas as informaçnoes que pegamos da ultima function que criamos no outro arquivo
+            // é aqui tambem que enviamos para a página de ticker
             const filteredTweets = filterTweets(tweets);
             res.json(filteredTweets);
         });
