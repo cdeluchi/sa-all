@@ -1,4 +1,7 @@
+const { rejects } = require("assert");
+const { response } = require("express");
 const https = require("https");
+const { resolve } = require("path");
 const { consumerKey, consumerSecret } = require("./secrets");
 
 //  ***** very important **** //
@@ -13,44 +16,39 @@ const { consumerKey, consumerSecret } = require("./secrets");
 //  esta terceira função vai pegar os 'pedaços' do token que geramos primeiro e vai armazendar esses dados na array vazia que criamos antes.
 // nesta última callback ela precisa receber o argumento null na função e ela vai estar alinhada com a função do index.js que também terá um paramentro como erro, este erro vai ser verificado antes de qualqeur outra coisa, caso tenha o erro já sabemos como resolver.
 
-module.exports.getToken = function (callback) {
-    let creds = `${consumerKey}:${consumerSecret}`;
-    let encodedCreds = new Buffer.from(creds).toString("base64");
-    // buffer 'base64' vao codificar nosso token vao trazer numeros binários como códigos dificil de acessar
-    // nesse objeto vamos armazenar todas as informações que o token precisa. qual é o site, o caminha que ele esta seguindo,
-    // metodo nesse caso é o post por que estamos solicitando as informações do twitter. ou seja estamos mandando um requerimento
-    // headers será a autorização para uso e o tipo de conteúdo. que estamos usando do let encodedCreds que contem todas as informações do buffer e
-    //  resultado dos 2 argumentos que passamos antes que é a chave e a password que nesse caso está sendo buscada no secrets.json que passamos antes
+module.exports.getToken = function () {
+    return new Promise(function (resolve, reject) {
+        let creds = `${consumerKey}:${consumerSecret}`;
+        let encodedCreds = new Buffer.from(creds).toString("base64");
 
-    const options = {
-        host: "api.twitter.com",
-        path: "/oauth2/token",
-        method: "POST",
-        headers: {
-            Authorization: `Basic ${encodedCreds}`,
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
-    };
-    const req = https.request(options, cb);
-    req.end("grant_type=client_credentials");
-    function cb(resp) {
-        if (resp.statusCode != 200) {
-            callback(resp.statusCode);
-            return;
+        const options = {
+            host: "api.twitter.com",
+            path: "/oauth2/token",
+            method: "POST",
+            headers: {
+                Authorization: `Basic ${encodedCreds}`,
+                "Content-Type":
+                    "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+        };
+        const req = https.request(options, cb);
+        req.end("grant_type=client_credentials");
+        function cb(resp) {
+            if (resp.statusCode != 200) {
+                rejects(resp.statusCode);
+            }
+
+            // aqui criamos o body com a array vazia para armazenar todos os dados que o token teceber
+
+            let body = "";
+            resp.on("data", (chunk) => {
+                body += chunk;
+            }).on("end", () => {
+                let parsedBody = JSON.parse(body);
+                resolve(parsedBody.access_token);
+            });
         }
-
-        // aqui criamos o body com a array vazia para armazenar todos os dados que o token teceber
-
-        let body = "";
-        resp.on("data", (chunk) => {
-            body += chunk;
-        }).on("end", () => {
-            console.log("body in twitter.js: ", body);
-            let parsedBody = JSON.parse(body);
-            console.log("parsedBody: ", parsedBody);
-            callback(null, parsedBody.access_token);
-        });
-    }
+    });
 };
 
 // nesta proxima função vai ser quase a mesma coisa só que a diferença é que estamos GET e nao POST
@@ -58,35 +56,36 @@ module.exports.getToken = function (callback) {
 // nosso objeto também será diferente, aqui vamos ter os dados para acessar os twitter como o metodo GET,
 // o path também é para receber, e aqui não precisamos mais da autorização acess.token somente o bearerToken
 
-module.exports.getTweets = function (bearerToken, callback) {
-    const options = {
-        method: "GET",
-        host: "api.twitter.com",
-        path: "/1.1/statuses/user_timeline.json?screen_name=nytimes&tweet_mode=extended",
-        screen_name: "Twitter",
-        headers: {
-            Authorization: `Bearer ${bearerToken}`,
-        },
-    };
-    // esta parte é basicamente igual com o statuscode 200
-    const req = https.request(options, cb);
-    req.end();
-    function cb(resp) {
-        if (resp.statusCode != 200) {
-            callback(resp.statusCode);
-            return;
+module.exports.getTweets = function (bearerToken) {
+    return new Promise(function (resolve, reject) {
+        const options = {
+            method: "GET",
+            host: "api.twitter.com",
+            path: "/1.1/statuses/user_timeline.json?screen_name=nytimes&tweet_mode=extended",
+            screen_name: "Twitter",
+            headers: {
+                Authorization: `Bearer ${bearerToken}`,
+            },
+        };
+        // esta parte é basicamente igual com o statuscode 200
+        const req = https.request(options, cb);
+        req.end("grant_type=client_credentials");
+        function cb(resp) {
+            if (resp.statusCode != 200) {
+                rejects(resp.statusCode);
+            }
+            // o body continua vazio para receber os dados parcionados que o twitter vaimandar
+            let body = "";
+            resp.on("data", (chunk) => {
+                body += chunk;
+            }).on("end", () => {
+                let parsedBody = JSON.parse(body);
+                resolve(parsedBody);
+            });
         }
-        // o body continua vazio para receber os dados parcionados que o twitter vaimandar
-        let body = "";
-        resp.on("data", (chunk) => {
-            body += chunk;
-        }).on("end", () => {
-            let parsedBody = JSON.parse(body);
-            callback(null, parsedBody);
-        });
-    }
+    });
 };
-// nesta funçnao nao precisamos de uma callback function por que aqui só estamos enviando os dados para a página que criamos antes
+// nesta função nao precisamos de uma callback function por que aqui só estamos enviando os dados para a página que criamos antes
 // criamos uma nova variavel para conter todos os dados. lembrando que esse arquivo est´å lincado com o ticker que criamos antes, então tudo o que
 // colocarmos aqui vai aparecer naquela página
 // criamos então um loop que vai passear por todos os twitters fornecidos e procurar exametente o que precisamos que é um twitter com uma única url e que tenha um texto
@@ -113,3 +112,9 @@ module.exports.filterTweets = function (twitter) {
     console.log(twitterData);
     return twitterData;
 };
+
+// buffer 'base64' vao codificar nosso token vao trazer numeros binários como códigos dificil de acessar
+// nesse objeto vamos armazenar todas as informações que o token precisa. qual é o site, o caminha que ele esta seguindo,
+// metodo nesse caso é o post por que estamos solicitando as informações do twitter. ou seja estamos mandando um requerimento
+// headers será a autorização para uso e o tipo de conteúdo. que estamos usando do let encodedCreds que contem todas as informações do buffer e
+//  resultado dos 2 argumentos que passamos antes que é a chave e a password que nesse caso está sendo buscada no secrets.json que passamos antes
