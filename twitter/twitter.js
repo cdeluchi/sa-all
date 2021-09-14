@@ -70,7 +70,8 @@ module.exports.filterTweets = function (twitter) {
         const formatedTweet = {};
         if (twitter[i].entities.urls.length === 1) {
             // console.log("tweets meet condition");
-            formatedTweet.name = twitter[i].name;
+            formatedTweet.name = twitter[i].user["screen_name"];
+            formatedTweet.text = twitter[i].display_text_range[(0, 25)];
             formatedTweet.text = twitter[i].full_text;
             formatedTweet.url = twitter[i].entities.urls[0].url;
             twitterData.push(formatedTweet);
