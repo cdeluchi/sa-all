@@ -13,7 +13,7 @@ function logSizes(path) {
         withFileTypes: true,
     })
         .then((files) => {
-            const promisses = [];
+            const promises = [];
             for (let i = 0; i < files.length; i++) {
                 if (files[i].isFile()) {
                     stat(path + "/" + files[i].name)
@@ -27,12 +27,14 @@ function logSizes(path) {
                     logSizes(path + "/" + files[i].name);
                 }
             }
-            return Promise.all(promisses);
+            return Promise.all(promises);
         })
         .catch((err) => console.log("err in readdir", err));
 }
-const logSizesPromisses = logSizes(__dirname);
-logSizesPromisses.then(() => console.log("Done!"));
+const statPromises = stat(__dirname);
+statPromises.push(promises);
+const logSizesPromises = logSizes(__dirname);
+logSizesPromises.then(() => console.log("Done!"));
 
 // return readdir().then((files, { withFileTypes:true})=>{
 // console.log("files:", files); // this will return an array of files
