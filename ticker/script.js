@@ -20,8 +20,9 @@
 
     $.ajax({
         method: "GET",
-        url: "data.json",
+        url: "data-server.json",
         success: function (arrayOfHeadlines) {
+            console.log(arrayOfHeadlines);
             for (var i = 0; i < arrayOfHeadlines.length; i++) {
                 html +=
                     "<a href='" +
@@ -38,9 +39,6 @@
 
     // quando a função rodar precisamos criar e var diferentes. 1 será referente ao nosso elemente <a> que continha todos as nossas urls no html
     //  usamos o Math.floor para dar um numero aleatório para o loop que está rodando.
-    //
-    //
-    //
 
     function moveHeadlines() {
         var jqA = $("a");
