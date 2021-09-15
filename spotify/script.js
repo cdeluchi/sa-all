@@ -81,28 +81,51 @@
     if (location.search.indexOf("scroll=infinite") != -1) {
         // infiniteScroll = true;
         checkScrollPos();
+
         function checkScrollPos() {
             setTimeout(function () {
                 if (
-                    $(window).scrollTop() ==
-                    $(document).height() - $(window).height()
+                    $(window).height() ==
+                    $(document).scrollTop() > $(document).height() - 500
                 ) {
-                    function sendAgain() {
+                    function scrollFunc(responseData) {
+                        console.log("more", nextUrl);
+                        checkScrollPos();
                         $.ajax({
                             url: nextUrl,
                             method: "GET",
-                            success: function (data) {
+                            success: function (responseData) {
                                 // console.log("nextUrl:", nextUrl);
-                                data = data.albums || data.artists;
+                                checkScrollPos();
                                 var html2 = "";
-                                for (var i = 0; i < data.items.length; i++) {
-                                    var img = "./default.jpeg";
-                                    if (data.items[i].images[0]) {
-                                        img = data.items[i].images[0].url;
+                                responseData =
+                                    responseData.albums || responseData.artists;
+
+                                for (
+                                    var i = 0;
+                                    i < responseData.items.length;
+                                    i++
+                                ) {
+                                    var imgUrl = "./default.jpeg";
+                                    if (
+                                        responseData.items[i].images.length > 0
+                                    ) {
+                                        imgUrl =
+                                            responseData.items[i].images[0].url;
                                     }
                                     html2 +=
-                                        "<div>" + data.items[i].name + "</div>";
+                                        "<div>" +
+                                        responseData.items[i].name +
+                                        "</div>";
                                 }
+                                $("#more").hide();
+
+                                nextUrl =
+                                    responseData.next &&
+                                    responseData.next.replace(
+                                        "api.spotify.com/v1/search",
+                                        "spicedify.herokuapp.com/spotify"
+                                    );
                                 // console.log(html2);
                                 $(".results-container").append(html2);
                             },
@@ -110,7 +133,7 @@
                     }
                 }
                 // checkScrollPos();
-            }, 1000);
+            }, 0);
         }
     }
 
