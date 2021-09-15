@@ -1,4 +1,4 @@
-(function (diags) {
+(function () {
     var currentPlayer = "player1";
     var slots = $(".slot");
     // console.log("all slots ===> ", slots);
@@ -46,7 +46,7 @@
 
             // console.log("nextplayer is ====> ", currentPlayer);
         } else if (checkForVictoryDiagonal(slots, diags)) {
-            console.log("you have a row victory!!!");
+            // console.log(diags);
             alert("You're the winner!🤸 🎉");
             window.location.reload();
 
@@ -103,42 +103,28 @@
             for (var i = 0; i < diags.length; i++) {
                 var firstTry = diags[i][0];
                 var secondTry = diags[i][1];
+                // It's diags, the array of sets of indexes, that you need to loop through. For each set, you want to check to see if the element at each of the four indexes has the current player class. If so, victory!
+
                 var thirdTry = diags[i][2];
                 var forthTry = diags[i][3];
-                //         console.log(slots.eq(firstTry).hasClass(currentPlayer));
+                // console.log(slots.eq(firstTry).hasClass(currentPlayer));
+                // It's diags, the array of sets of indexes, that you need to loop through. For each set, you want to check to see if the element at each of the four indexes has the current player class. If so, victory!
+                // If you have stored in a variable named slots a jQuery object containing the 42 slots, then slots.eq(diags[j])
+                // would give you the element.
                 if (
                     slots.eq(firstTry).hasClass(currentPlayer) &&
                     slots.eq(secondTry).hasClass(currentPlayer) &&
+                    // It's diags, the array of sets of indexes, that you need to loop through. For each set, you want to check to see if the element at each of the four indexes has the current player class. If so, victory!
+
                     slots.eq(thirdTry).hasClass(currentPlayer) &&
                     slots.eq(forthTry).hasClass(currentPlayer)
+                    // It's diags, the array of sets of indexes, that you need to loop through. For each set, you want to check to see if the element at each of the four indexes has the current player class. If so, victory!
                 ) {
                     console.log("this is a winner?", $(currentPlayer));
                     return true;
                 }
             }
-            // diags[j] will be a number. It is the index of a slot.
-            // You can use that index to find the slot.
-            // If you have stored in a variable named slots a jQuery object containing the 42 slots, then slots.eq(diags[j])
-            // would give you the element.
-            //             var secondTry = diags[j][1];
-            //             var thirdTry = diags[j][2];
-            //             var forthTry = diags[j][3];
-            //             console.log(slots.eq(firstTry).hasClass(currentPlayer));
 
-            //             if (
-            //                 diags.eq(firstTry).hasClass(currentPlayer) &&
-            //                 diags.eq(secondTry).hasClass(currentPlayer) &&
-            //                 diags.eq(thirdTry).hasClass(currentPlayer) &&
-            //                 diags.eq(forthTry).hasClass(currentPlayer)
-            //             ) {
-            //                 return true;
-            //             }
-            //         }
-            //         return false;
-            //     }
-            // }
-            // I think you want to call this function only if there isn't a vertical or horizontal victory.
-            // checkForVictoryDiagonal();
             return false;
         }
     });
