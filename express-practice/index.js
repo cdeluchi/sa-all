@@ -20,6 +20,8 @@ const myAuth = function (req, res, next) {
         next();
     }
 };
+
+//this is my middleware
 app.use("/carousel", myAuth);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -40,6 +42,8 @@ app.get("/cookie", (req, res) => {
         `<h1>Accept cookies? 🎠</h1><h2><form method='POST'> <input type="checkbox" name="subscribe"></div> <button> submit </submit> </form>`
     );
 });
+
+// this is my post request
 
 app.post("/cookie", (req, res) => {
     const { subscribe } = req.body;
