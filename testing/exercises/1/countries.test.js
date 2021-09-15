@@ -16,9 +16,9 @@ test("Returns no more than 4 matches", () => {
 
 // The search is case insensitive
 test("This search is case insensitive", () => {
-    const seachAll = "Fiji";
-    const searchLowCase = "fiji";
-    const searchUpperCase = "FIJI";
+    const seachAll = countries.find("An");
+    const searchLowCase = countries.find("an");
+    const searchUpperCase = countries.find("AN");
     expect(seachAll).toEqual(searchLowCase);
     expect(seachAll).toEqual(searchUpperCase);
 });
