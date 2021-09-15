@@ -24,12 +24,12 @@ body {
 
 #pane1 {
     z-index: 100;
-    background: #cc6600;
+    background: #9c4a69;
     width: 50%;
 }
 
 #pane2 {
-    background: #ffcc00;
+    background: #7f5299;
 }
 
 #slide {
