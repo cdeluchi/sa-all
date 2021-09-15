@@ -25,10 +25,10 @@ header {
 }
 
 main {
-    flex-grow: 1;
     background-color: #d5c9df;
-}
-main > img {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 footer {
